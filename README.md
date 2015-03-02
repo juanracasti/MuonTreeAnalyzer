@@ -46,6 +46,7 @@ Let's run the code
 
 Edit the file runAll_muonAnalyzer.sh:
 
+    cd MuonTreeAnalyzer/src
      vim runAll_muonAnalyzer.sh
 
 Comment/uncomment the necessary lines depending on the samples you want to run.
