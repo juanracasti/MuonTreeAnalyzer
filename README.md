@@ -32,12 +32,12 @@ Get the material
 File description
 ====
 
-muonAnalyzer contains the main analysis functions.
+* **muonAnalyzer** contains the main analysis functions.
  
-RunPROOF_muonAnalyzer executes muonAnalyzer using PROOF. Edit it if you need to
+* **RunPROOF_muonAnalyzer** executes muonAnalyzer using PROOF. Edit it if you need to
 modify the location of the source rootfiles or add new samples.
 
-runAll_muonAnalyzer.sh is just a quick executable.
+* **runAll_muonAnalyzer.sh** is just a quick executable.
 
 The rest of the files shouldn't be modified.
 
