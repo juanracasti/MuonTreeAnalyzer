@@ -76,273 +76,273 @@ void muonAnalyzer::Initialise() {
 
   //Efficiencies vs pt, eta and npv
 
-  const int ptNbins  = 8;
-  const int etaNbins = 14;
-  const int npvNbins = 7;
-  float ptbins[ptNbins]   = {10.0, 20.0, 30.0, 40.0, 50.0, 70.0, 100.0, 150.0};
-  float etabins[etaNbins] = {-2.4, -2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1, 2.4};
-  float npvbins[npvNbins] = {0.0, 10.0, 15.0, 20.0, 25.0, 30.0, 40.0};
+  // const int ptNbins  = 8;
+  // const int etaNbins = 14;
+  // const int npvNbins = 7;
+  // float ptbins[ptNbins]   = {10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 100.0, 200.0};
+  // float etabins[etaNbins] = {-2.4, -2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1, 2.4};
+  // float npvbins[npvNbins] = {0.0, 10.0, 15.0, 20.0, 25.0, 30.0, 40.0};
 
   h_Dilep_Eff_pt_AllRECO[0] = CreateH1F("h_Dilep_Eff_pt_AllRECO_Mu1", "h_Dilep_Eff_pt_AllRECO_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_AllRECO[1] = CreateH1F("h_Dilep_Eff_pt_AllRECO_Mu2", "h_Dilep_Eff_pt_AllRECO_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_GEN[0] = CreateH1F("h_Dilep_Eff_pt_GEN_Mu1", "h_Dilep_Eff_pt_GEN_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_GEN[1] = CreateH1F("h_Dilep_Eff_pt_GEN_Mu2", "h_Dilep_Eff_pt_GEN_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_AllMatched[0] = CreateH1F("h_Dilep_Eff_pt_AllMatched_Mu1", "h_Dilep_Eff_pt_AllMatched_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_AllMatched[1] = CreateH1F("h_Dilep_Eff_pt_AllMatched_Mu2", "h_Dilep_Eff_pt_AllMatched_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_GLBID[0] = CreateH1F("h_Dilep_Eff_pt_GLBID_Mu1", "h_Dilep_Eff_pt_GLBID_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_GLBID[1] = CreateH1F("h_Dilep_Eff_pt_GLBID_Mu2", "h_Dilep_Eff_pt_GLBID_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_PFID[0] = CreateH1F("h_Dilep_Eff_pt_PFID_Mu1", "h_Dilep_Eff_pt_PFID_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_PFID[1] = CreateH1F("h_Dilep_Eff_pt_PFID_Mu2", "h_Dilep_Eff_pt_PFID_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_GLBPFID[0] = CreateH1F("h_Dilep_Eff_pt_GLBPFID_Mu1", "h_Dilep_Eff_pt_GLBPFID_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_GLBPFID[1] = CreateH1F("h_Dilep_Eff_pt_GLBPFID_Mu2", "h_Dilep_Eff_pt_GLBPFID_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_dzID[0] = CreateH1F("h_Dilep_Eff_pt_dzID_Mu1", "h_Dilep_Eff_pt_dzID_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_dzID[1] = CreateH1F("h_Dilep_Eff_pt_dzID_Mu2", "h_Dilep_Eff_pt_dzID_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_fromPVID[0] = CreateH1F("h_Dilep_Eff_pt_fromPVID_Mu1", "h_Dilep_Eff_pt_fromPVID_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_fromPVID[1] = CreateH1F("h_Dilep_Eff_pt_fromPVID_Mu2", "h_Dilep_Eff_pt_fromPVID_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightIDbutdz[0] = CreateH1F("h_Dilep_Eff_pt_TightIDbutdz_Mu1", "h_Dilep_Eff_pt_TightIDbutdz_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightIDbutdz[1] = CreateH1F("h_Dilep_Eff_pt_TightIDbutdz_Mu2", "h_Dilep_Eff_pt_TightIDbutdz_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightIDfromPV[0] = CreateH1F("h_Dilep_Eff_pt_TightIDfromPV_Mu1", "h_Dilep_Eff_pt_TightIDfromPV_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightIDfromPV[1] = CreateH1F("h_Dilep_Eff_pt_TightIDfromPV_Mu2", "h_Dilep_Eff_pt_TightIDfromPV_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightIDAndfromPV[0] = CreateH1F("h_Dilep_Eff_pt_TightIDAndfromPV_Mu1", 
 						 "h_Dilep_Eff_pt_TightIDAndfromPV_Mu1",
-						 ptNbins - 1, ptbins);
+						 200, 0, 200);
   h_Dilep_Eff_pt_TightIDAndfromPV[1] = CreateH1F("h_Dilep_Eff_pt_TightIDAndfromPV_Mu2", 
 						 "h_Dilep_Eff_pt_TightIDAndfromPV_Mu2",
-						 ptNbins - 1, ptbins);
+						 200, 0, 200);
   h_Dilep_Eff_pt_TightID[0] = CreateH1F("h_Dilep_Eff_pt_TightID_Mu1", "h_Dilep_Eff_pt_TightID_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightID[1] = CreateH1F("h_Dilep_Eff_pt_TightID_Mu2", "h_Dilep_Eff_pt_TightID_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_HWWID[0] = CreateH1F("h_Dilep_Eff_pt_HWWID_Mu1", "h_Dilep_Eff_pt_HWWID_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_HWWID[1] = CreateH1F("h_Dilep_Eff_pt_HWWID_Mu2", "h_Dilep_Eff_pt_HWWID_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightISOR03[0] = CreateH1F("h_Dilep_Eff_pt_TightISOR03_Mu1", "h_Dilep_Eff_pt_TightISOR03_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightISOR03[1] = CreateH1F("h_Dilep_Eff_pt_TightISOR03_Mu2", "h_Dilep_Eff_pt_TightISOR03_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightISOR04[0] = CreateH1F("h_Dilep_Eff_pt_TightISOR04_Mu1", "h_Dilep_Eff_pt_TightISOR04_Mu1",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightISOR04[1] = CreateH1F("h_Dilep_Eff_pt_TightISOR04_Mu2", "h_Dilep_Eff_pt_TightISOR04_Mu2",
-					   ptNbins - 1, ptbins);
+					   200, 0, 200);
   h_Dilep_Eff_pt_TightISOdBetaR03[0] = CreateH1F("h_Dilep_Eff_pt_TightISOdBetaR03_Mu1", 
 						 "h_Dilep_Eff_pt_TightISOdBetaR03_Mu1",
-						 ptNbins - 1, ptbins);
+						 200, 0, 200);
   h_Dilep_Eff_pt_TightISOdBetaR03[1] = CreateH1F("h_Dilep_Eff_pt_TightISOdBetaR03_Mu2", 
 						 "h_Dilep_Eff_pt_TightISOdBetaR03_Mu2",
-						 ptNbins - 1, ptbins);
+						 200, 0, 200);
   h_Dilep_Eff_pt_TightISOdBetaR04[0] = CreateH1F("h_Dilep_Eff_pt_TightISOdBetaR04_Mu1", 
 						 "h_Dilep_Eff_pt_TightISOdBetaR04_Mu1",
-						 ptNbins - 1, ptbins);
+						 200, 0, 200);
   h_Dilep_Eff_pt_TightISOdBetaR04[1] = CreateH1F("h_Dilep_Eff_pt_TightISOdBetaR04_Mu2", 
 						 "h_Dilep_Eff_pt_TightISOdBetaR04_Mu2",
-						 ptNbins - 1, ptbins);
+						 200, 0, 200);
   h_Dilep_Eff_pt_TightISOPFWeightsR03[0] = CreateH1F("h_Dilep_Eff_pt_TightISOPFWeightsR03_Mu1", 
 						     "h_Dilep_Eff_pt_TightISOPFWeightsR03_Mu1",
-						     ptNbins - 1, ptbins);
+						     200, 0, 200);
   h_Dilep_Eff_pt_TightISOPFWeightsR03[1] = CreateH1F("h_Dilep_Eff_pt_TightISOPFWeightsR03_Mu2", 
 						     "h_Dilep_Eff_pt_TightISOPFWeightsR03_Mu2",
-						     ptNbins - 1, ptbins);
+						     200, 0, 200);
   h_Dilep_Eff_pt_TightISOPFWeightsR04[0] = CreateH1F("h_Dilep_Eff_pt_TightISOPFWeightsR04_Mu1", 
 						     "h_Dilep_Eff_pt_TightISOPFWeightsR04_Mu1",
-						     ptNbins - 1, ptbins);
+						     200, 0, 200);
   h_Dilep_Eff_pt_TightISOPFWeightsR04[1] = CreateH1F("h_Dilep_Eff_pt_TightISOPFWeightsR04_Mu2", 
 						     "h_Dilep_Eff_pt_TightISOPFWeightsR04_Mu2",
-						     ptNbins - 1, ptbins);
+						     200, 0, 200);
 
   h_Dilep_Eff_eta_AllRECO[0] = CreateH1F("h_Dilep_Eff_eta_AllRECO_Mu1", "h_Dilep_Eff_eta_AllRECO_Mu1",
-					 etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_AllRECO[1] = CreateH1F("h_Dilep_Eff_eta_AllRECO_Mu2", "h_Dilep_Eff_eta_AllRECO_Mu2",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_GEN[0] = CreateH1F("h_Dilep_Eff_eta_GEN_Mu1", "h_Dilep_Eff_eta_GEN_Mu1",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_GEN[1] = CreateH1F("h_Dilep_Eff_eta_GEN_Mu2", "h_Dilep_Eff_eta_GEN_Mu2",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_AllMatched[0] = CreateH1F("h_Dilep_Eff_eta_AllMatched_Mu1", "h_Dilep_Eff_eta_AllMatched_Mu1",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_AllMatched[1] = CreateH1F("h_Dilep_Eff_eta_AllMatched_Mu2", "h_Dilep_Eff_eta_AllMatched_Mu2",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_GLBID[0] = CreateH1F("h_Dilep_Eff_eta_GLBID_Mu1", "h_Dilep_Eff_eta_GLBID_Mu1",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_GLBID[1] = CreateH1F("h_Dilep_Eff_eta_GLBID_Mu2", "h_Dilep_Eff_eta_GLBID_Mu2",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_PFID[0] = CreateH1F("h_Dilep_Eff_eta_PFID_Mu1", "h_Dilep_Eff_eta_PFID_Mu1",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_PFID[1] = CreateH1F("h_Dilep_Eff_eta_PFID_Mu2", "h_Dilep_Eff_eta_PFID_Mu2",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_GLBPFID[0] = CreateH1F("h_Dilep_Eff_eta_GLBPFID_Mu1", "h_Dilep_Eff_eta_GLBPFID_Mu1",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_GLBPFID[1] = CreateH1F("h_Dilep_Eff_eta_GLBPFID_Mu2", "h_Dilep_Eff_eta_GLBPFID_Mu2",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_dzID[0] = CreateH1F("h_Dilep_Eff_eta_dzID_Mu1", "h_Dilep_Eff_eta_dzID_Mu1",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_dzID[1] = CreateH1F("h_Dilep_Eff_eta_dzID_Mu2", "h_Dilep_Eff_eta_dzID_Mu2",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_fromPVID[0] = CreateH1F("h_Dilep_Eff_eta_fromPVID_Mu1", "h_Dilep_Eff_eta_fromPVID_Mu1",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_fromPVID[1] = CreateH1F("h_Dilep_Eff_eta_fromPVID_Mu2", "h_Dilep_Eff_eta_fromPVID_Mu2",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightIDbutdz[0] = CreateH1F("h_Dilep_Eff_eta_TightIDbutdz_Mu1", "h_Dilep_Eff_eta_TightIDbutdz_Mu1",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightIDbutdz[1] = CreateH1F("h_Dilep_Eff_eta_TightIDbutdz_Mu2", "h_Dilep_Eff_eta_TightIDbutdz_Mu2",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightIDfromPV[0] = CreateH1F("h_Dilep_Eff_eta_TightIDfromPV_Mu1", "h_Dilep_Eff_eta_TightIDfromPV_Mu1",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightIDfromPV[1] = CreateH1F("h_Dilep_Eff_eta_TightIDfromPV_Mu2", "h_Dilep_Eff_eta_TightIDfromPV_Mu2",
-					   etaNbins - 1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightIDAndfromPV[0] = CreateH1F("h_Dilep_Eff_eta_TightIDAndfromPV_Mu1", 
 						 "h_Dilep_Eff_eta_TightIDAndfromPV_Mu1",
-						 etaNbins - 1, etabins);
+						 50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightIDAndfromPV[1] = CreateH1F("h_Dilep_Eff_eta_TightIDAndfromPV_Mu2", 
 						 "h_Dilep_Eff_eta_TightIDAndfromPV_Mu2",
-						 etaNbins - 1, etabins);
+						 50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightID[0] = CreateH1F("h_Dilep_Eff_eta_TightID_Mu1", "h_Dilep_Eff_eta_TightID_Mu1",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightID[1] = CreateH1F("h_Dilep_Eff_eta_TightID_Mu2", "h_Dilep_Eff_eta_TightID_Mu2",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_HWWID[0] = CreateH1F("h_Dilep_Eff_eta_HWWID_Mu1", "h_Dilep_Eff_eta_HWWID_Mu1",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_HWWID[1] = CreateH1F("h_Dilep_Eff_eta_HWWID_Mu2", "h_Dilep_Eff_eta_HWWID_Mu2",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOR03[0] = CreateH1F("h_Dilep_Eff_eta_TightISOR03_Mu1", "h_Dilep_Eff_eta_TightISOR03_Mu1",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOR03[1] = CreateH1F("h_Dilep_Eff_eta_TightISOR03_Mu2", "h_Dilep_Eff_eta_TightISOR03_Mu2",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOR04[0] = CreateH1F("h_Dilep_Eff_eta_TightISOR04_Mu1", "h_Dilep_Eff_eta_TightISOR04_Mu1",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOR04[1] = CreateH1F("h_Dilep_Eff_eta_TightISOR04_Mu2", "h_Dilep_Eff_eta_TightISOR04_Mu2",
-					   etaNbins -1, etabins);
+					   50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOdBetaR03[0] = CreateH1F("h_Dilep_Eff_eta_TightISOdBetaR03_Mu1", 
 						 "h_Dilep_Eff_eta_TightISOdBetaR03_Mu1",
-						 etaNbins -1, etabins);
+						 50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOdBetaR03[1] = CreateH1F("h_Dilep_Eff_eta_TightISOdBetaR03_Mu2", 
 						 "h_Dilep_Eff_eta_TightISOdBetaR03_Mu2",
-						 etaNbins -1, etabins);
+						 50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOdBetaR04[0] = CreateH1F("h_Dilep_Eff_eta_TightISOdBetaR04_Mu1", 
 						 "h_Dilep_Eff_eta_TightISOdBetaR04_Mu1",
-						 etaNbins -1, etabins);
+						 50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOdBetaR04[1] = CreateH1F("h_Dilep_Eff_eta_TightISOdBetaR04_Mu2", 
 						 "h_Dilep_Eff_eta_TightISOdBetaR04_Mu2",
-						 etaNbins -1, etabins);
+						 50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOPFWeightsR03[0] = CreateH1F("h_Dilep_Eff_eta_TightISOPFWeightsR03_Mu1", 
 						     "h_Dilep_Eff_eta_TightISOPFWeightsR03_Mu1",
-						     etaNbins -1, etabins);
+						     50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOPFWeightsR03[1] = CreateH1F("h_Dilep_Eff_eta_TightISOPFWeightsR03_Mu2", 
 						     "h_Dilep_Eff_eta_TightISOPFWeightsR03_Mu2",
-						     etaNbins -1, etabins);
+						     50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOPFWeightsR04[0] = CreateH1F("h_Dilep_Eff_eta_TightISOPFWeightsR04_Mu1", 
 						     "h_Dilep_Eff_eta_TightISOPFWeightsR04_Mu1",
-						     etaNbins -1, etabins);
+						     50, -2.5, 2.5);
   h_Dilep_Eff_eta_TightISOPFWeightsR04[1] = CreateH1F("h_Dilep_Eff_eta_TightISOPFWeightsR04_Mu2", 
 						     "h_Dilep_Eff_eta_TightISOPFWeightsR04_Mu2",
-						     etaNbins -1, etabins);
+						     50, -2.5, 2.5);
 
   h_Dilep_Eff_npv_AllRECO[0] = CreateH1F("h_Dilep_Eff_npv_AllRECO_Mu1", "h_Dilep_Eff_npv_AllRECO_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_AllRECO[1] = CreateH1F("h_Dilep_Eff_npv_AllRECO_Mu2", "h_Dilep_Eff_npv_AllRECO_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_GEN[0] = CreateH1F("h_Dilep_Eff_npv_GEN_Mu1", "h_Dilep_Eff_npv_GEN_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_GEN[1] = CreateH1F("h_Dilep_Eff_npv_GEN_Mu2", "h_Dilep_Eff_npv_GEN_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_AllMatched[0] = CreateH1F("h_Dilep_Eff_npv_AllMatched_Mu1", "h_Dilep_Eff_npv_AllMatched_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_AllMatched[1] = CreateH1F("h_Dilep_Eff_npv_AllMatched_Mu2", "h_Dilep_Eff_npv_AllMatched_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_GLBID[0] = CreateH1F("h_Dilep_Eff_npv_GLBID_Mu1", "h_Dilep_Eff_npv_GLBID_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_GLBID[1] = CreateH1F("h_Dilep_Eff_npv_GLBID_Mu2", "h_Dilep_Eff_npv_GLBID_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_PFID[0] = CreateH1F("h_Dilep_Eff_npv_PFID_Mu1", "h_Dilep_Eff_npv_PFID_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_PFID[1] = CreateH1F("h_Dilep_Eff_npv_PFID_Mu2", "h_Dilep_Eff_npv_PFID_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_GLBPFID[0] = CreateH1F("h_Dilep_Eff_npv_GLBPFID_Mu1", "h_Dilep_Eff_npv_GLBPFID_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_GLBPFID[1] = CreateH1F("h_Dilep_Eff_npv_GLBPFID_Mu2", "h_Dilep_Eff_npv_GLBPFID_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_dzID[0] = CreateH1F("h_Dilep_Eff_npv_dzID_Mu1", "h_Dilep_Eff_npv_dzID_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_dzID[1] = CreateH1F("h_Dilep_Eff_npv_dzID_Mu2", "h_Dilep_Eff_npv_dzID_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_fromPVID[0] = CreateH1F("h_Dilep_Eff_npv_fromPVID_Mu1", "h_Dilep_Eff_npv_fromPVID_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_fromPVID[1] = CreateH1F("h_Dilep_Eff_npv_fromPVID_Mu2", "h_Dilep_Eff_npv_fromPVID_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightIDbutdz[0] = CreateH1F("h_Dilep_Eff_npv_TightIDbutdz_Mu1", "h_Dilep_Eff_npv_TightIDbutdz_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightIDbutdz[1] = CreateH1F("h_Dilep_Eff_npv_TightIDbutdz_Mu2", "h_Dilep_Eff_npv_TightIDbutdz_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightIDfromPV[0] = CreateH1F("h_Dilep_Eff_npv_TightIDfromPV_Mu1", "h_Dilep_Eff_npv_TightIDfromPV_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightIDfromPV[1] = CreateH1F("h_Dilep_Eff_npv_TightIDfromPV_Mu2", "h_Dilep_Eff_npv_TightIDfromPV_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightIDAndfromPV[0] = CreateH1F("h_Dilep_Eff_npv_TightIDAndfromPV_Mu1", 
 						 "h_Dilep_Eff_npv_TightIDAndfromPV_Mu1",
-						 npvNbins - 1, npvbins);
+						 45, 0, 45);
   h_Dilep_Eff_npv_TightIDAndfromPV[1] = CreateH1F("h_Dilep_Eff_npv_TightIDAndfromPV_Mu2", 
 						 "h_Dilep_Eff_npv_TightIDAndfromPV_Mu2",
-						 npvNbins - 1, npvbins);
+						 45, 0, 45);
   h_Dilep_Eff_npv_TightID[0] = CreateH1F("h_Dilep_Eff_npv_TightID_Mu1", "h_Dilep_Eff_npv_TightID_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightID[1] = CreateH1F("h_Dilep_Eff_npv_TightID_Mu2", "h_Dilep_Eff_npv_TightID_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_HWWID[0] = CreateH1F("h_Dilep_Eff_npv_HWWID_Mu1", "h_Dilep_Eff_npv_HWWID_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_HWWID[1] = CreateH1F("h_Dilep_Eff_npv_HWWID_Mu2", "h_Dilep_Eff_npv_HWWID_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightISOR03[0] = CreateH1F("h_Dilep_Eff_npv_TightISOR03_Mu1", "h_Dilep_Eff_npv_TightISOR03_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightISOR03[1] = CreateH1F("h_Dilep_Eff_npv_TightISOR03_Mu2", "h_Dilep_Eff_npv_TightISOR03_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightISOR04[0] = CreateH1F("h_Dilep_Eff_npv_TightISOR04_Mu1", "h_Dilep_Eff_npv_TightISOR04_Mu1",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightISOR04[1] = CreateH1F("h_Dilep_Eff_npv_TightISOR04_Mu2", "h_Dilep_Eff_npv_TightISOR04_Mu2",
-					   npvNbins - 1, npvbins);
+					   45, 0, 45);
   h_Dilep_Eff_npv_TightISOdBetaR03[0] = CreateH1F("h_Dilep_Eff_npv_TightISOdBetaR03_Mu1", 
 						 "h_Dilep_Eff_npv_TightISOdBetaR03_Mu1",
-						 npvNbins - 1, npvbins);
+						 45, 0, 45);
   h_Dilep_Eff_npv_TightISOdBetaR03[1] = CreateH1F("h_Dilep_Eff_npv_TightISOdBetaR03_Mu2", 
 						 "h_Dilep_Eff_npv_TightISOdBetaR03_Mu2",
-						 npvNbins - 1, npvbins);
+						 45, 0, 45);
   h_Dilep_Eff_npv_TightISOdBetaR04[0] = CreateH1F("h_Dilep_Eff_npv_TightISOdBetaR04_Mu1", 
 						 "h_Dilep_Eff_npv_TightISOdBetaR04_Mu1",
-						 npvNbins - 1, npvbins);
+						 45, 0, 45);
   h_Dilep_Eff_npv_TightISOdBetaR04[1] = CreateH1F("h_Dilep_Eff_npv_TightISOdBetaR04_Mu2", 
 						 "h_Dilep_Eff_npv_TightISOdBetaR04_Mu2",
-						 npvNbins - 1, npvbins);
+						 45, 0, 45);
   h_Dilep_Eff_npv_TightISOPFWeightsR03[0] = CreateH1F("h_Dilep_Eff_npv_TightISOPFWeightsR03_Mu1", 
 						     "h_Dilep_Eff_npv_TightISOPFWeightsR03_Mu1",
-						     npvNbins - 1, npvbins);
+						     45, 0, 45);
   h_Dilep_Eff_npv_TightISOPFWeightsR03[1] = CreateH1F("h_Dilep_Eff_npv_TightISOPFWeightsR03_Mu2", 
 						     "h_Dilep_Eff_npv_TightISOPFWeightsR03_Mu2",
-						     npvNbins - 1, npvbins);
+						     45, 0, 45);
   h_Dilep_Eff_npv_TightISOPFWeightsR04[0] = CreateH1F("h_Dilep_Eff_npv_TightISOPFWeightsR04_Mu1", 
 						     "h_Dilep_Eff_npv_TightISOPFWeightsR04_Mu1",
-						     npvNbins - 1, npvbins);
+						     45, 0, 45);
   h_Dilep_Eff_npv_TightISOPFWeightsR04[1] = CreateH1F("h_Dilep_Eff_npv_TightISOPFWeightsR04_Mu2", 
 						     "h_Dilep_Eff_npv_TightISOPFWeightsR04_Mu2",
-						     npvNbins - 1, npvbins);
+						     45, 0, 45);
 
   // h_N_Dilep_TightMuCuts_butTkLayers[0] = CreateH1F("h_N_Dilep_TightMuCuts_butTkLayers_Mu1", 
   // 						   "h_N_Dilep_TightMuCuts_butTkLayers_Mu1",20, 0, 20); 
@@ -404,10 +404,20 @@ void muonAnalyzer::Initialise() {
   h_Dilep_TightMu_StaHits[0] =  CreateH1F("h_Dilep_TightMu_StaHits_Mu1", "h_Dilep_TightMu_StaHits_Mu1", 20, 0, 20);
   h_Dilep_TightMu_StaHits[1] =  CreateH1F("h_Dilep_TightMu_StaHits_Mu2", "h_Dilep_TightMu_StaHits_Mu2", 20, 0, 20);
 
-  h_Dilep_TightMu_pt[0]=   CreateH1F("h_Dilep_TightMu_pt_Mu1", "h_Dilep_TightMu_pt_Mu1", 100, 0,200);
-  h_Dilep_TightMu_pt[1] =  CreateH1F("h_Dilep_TightMu_pt_Mu2", "h_Dilep_TightMu_pt_Mu2", 100, 0,200);
-  h_Dilep_TightMu_eta[0]=   CreateH1F("h_Dilep_TightMu_eta_Mu1", "h_Dilep_TightMu_eta_Mu1", 100, -2.5,2.5);
-  h_Dilep_TightMu_eta[1] =  CreateH1F("h_Dilep_TightMu_eta_Mu2", "h_Dilep_TightMu_eta_Mu2", 100, -2.5,2.5);
+  h_Dilep_pt[0] =  CreateH1F("h_Dilep_pt_Mu1", "h_Dilep_pt_Mu1", 200, 0, 200);
+  h_Dilep_pt[1] =  CreateH1F("h_Dilep_pt_Mu2", "h_Dilep_pt_Mu2", 200, 0, 200);
+  h_Dilep_TightMu_pt[0] =  CreateH1F("h_Dilep_TightMu_pt_Mu1", "h_Dilep_TightMu_pt_Mu1", 200, 0, 200);
+  h_Dilep_TightMu_pt[1] =  CreateH1F("h_Dilep_TightMu_pt_Mu2", "h_Dilep_TightMu_pt_Mu2", 200, 0, 200);
+
+  h_Dilep_eta[0] =  CreateH1F("h_Dilep_eta_Mu1", "h_Dilep_eta_Mu1", 50, -2.5,2.5);
+  h_Dilep_eta[1] =  CreateH1F("h_Dilep_eta_Mu2", "h_Dilep_eta_Mu2", 50, -2.5,2.5);
+  h_Dilep_TightMu_eta[0] =  CreateH1F("h_Dilep_TightMu_eta_Mu1", "h_Dilep_TightMu_eta_Mu1", 50, -2.5,2.5);
+  h_Dilep_TightMu_eta[1] =  CreateH1F("h_Dilep_TightMu_eta_Mu2", "h_Dilep_TightMu_eta_Mu2", 50, -2.5,2.5);
+
+  h_Dilep_npv[0] =  CreateH1F("h_Dilep_npv_Mu1", "h_Dilep_npv_Mu1", 45, 0, 45);
+  h_Dilep_npv[1] =  CreateH1F("h_Dilep_npv_Mu2", "h_Dilep_npv_Mu2", 45, 0, 45);
+  h_Dilep_TightMu_npv[0] =  CreateH1F("h_Dilep_TightMu_npv_Mu1", "h_Dilep_TightMu_npv_Mu1", 45, 0, 45);
+  h_Dilep_TightMu_npv[1] =  CreateH1F("h_Dilep_TightMu_npv_Mu2", "h_Dilep_TightMu_npv_Mu2", 45, 0, 45);
 
   // PF Rel Iso
 
@@ -905,6 +915,7 @@ void muonAnalyzer::InsideLoop() {
 //------------------------------------------------------------------------------
   
   SetGenInfo(Signal);
+  doEffsGEN(Signal);
   
 
 //------------------------------------------------------------------------------
@@ -939,8 +950,14 @@ void muonAnalyzer::InsideLoop() {
   
   if ( T_Muon_Px->size() > 1 ) {  // require events with at least two muons 
     
-    if ( T_Muon_Pt->at(0) > 20 &&  fabs(T_Muon_Eta->at(0)) < 2.4 && 
-	 T_Muon_Pt->at(1) > 10 && fabs(T_Muon_Eta->at(1)) < 2.4 ) { 
+    // if ( T_Muon_Pt->at(0) > 20 &&  fabs(T_Muon_Eta->at(0)) < 2.4 && 
+    // 	 T_Muon_Pt->at(1) > 10 && fabs(T_Muon_Eta->at(1)) < 2.4 ) { 
+
+    if ( (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau)                                  &&
+	 G_GEN_PromptMuon_4vec[0].Perp() > 10 &&  fabs(G_GEN_PromptMuon_4vec[0].Eta()) < 2.4 && 
+	 G_GEN_PromptMuon_4vec[1].Perp() > 10 &&  fabs(G_GEN_PromptMuon_4vec[1].Eta()) < 2.4 &&
+	 T_Muon_Pt->at(0) > 10                &&  fabs(T_Muon_Eta->at(0)) < 2.4              && 
+	 T_Muon_Pt->at(1) > 10                &&  fabs(T_Muon_Eta->at(1)) < 2.4                 ) {
  
       int ch1 = T_Muon_Charge->at(0);
       int ch2 = T_Muon_Charge->at(1);
@@ -956,20 +973,17 @@ void muonAnalyzer::InsideLoop() {
 	int Mu2 = 1;
 
 	int newiVertex = -999;
-
 	double dZVertex = 999.0;
 
 	bool isMatchGenReco = false;
 	isMatchGenReco = MatchGenToReco(Mu1, Mu2, Signal);
-	
-	doEffsGEN(factN, Signal);
 
 	if (isMatchGenReco) { 
 
 	  h_N_PV3->Fill(N_PV, factN);
 	  
-	  doEffsRECO(Mu1, factN);
-	  doEffsRECO(Mu2, factN);
+	  doEffsRECO(Mu1, 0);
+	  doEffsRECO(Mu2, 1);
 
 	  newiVertex = SelectedVertexIndex(Mu1); //--> Select the closest vertex to Mu1
 	  
@@ -1229,7 +1243,7 @@ bool muonAnalyzer::passTightMuCuts(int iMu,
   if(T_Muon_IsPFMuon->at(iMu) && T_Muon_IsGlobalMuon->at(iMu)) 
     muon_sel[0] = true;
    
-  if (G_Muon_4vec[iMu].Perp() > 10 &&  fabs(G_Muon_4vec[iMu].Eta()) < 2.4) 
+  //if (G_Muon_4vec[iMu].Perp() > 10 &&  fabs(G_Muon_4vec[iMu].Eta()) < 2.4) 
     muon_sel[1] = true;
    
   if (T_Muon_NormChi2GTrk->at(iMu) < 10) // && T_Muon_trkKink->at(iMu) < 20) 
@@ -1482,7 +1496,8 @@ void muonAnalyzer::SetGenInfo(TString Signal) {
     {
       
       if ( genPromptMuSize == 2 && fabs(T_Gen_PromptMuon_MpdgId->at(0)) == 24 && 
-	   fabs(T_Gen_PromptMuon_MpdgId->at(1)) == 24 ) {
+	   fabs(T_Gen_PromptMuon_MpdgId->at(1)) == 24 &&
+	   (T_Gen_PromptMuon_pdgId->at(0)*T_Gen_PromptMuon_pdgId->at(1)) < 0) {
 
 	p1 = TLorentzVector(T_Gen_PromptMuon_Px->at(0), 
 			    T_Gen_PromptMuon_Py->at(0),
@@ -1500,7 +1515,8 @@ void muonAnalyzer::SetGenInfo(TString Signal) {
       
       if ( genPromptMuSize == 1 && fabs(T_Gen_PromptMuon_MpdgId->at(0)) == 24 && 
 	   genPromptTauSize == 1 && fabs(T_Gen_PromptTau_MpdgId->at(0))== 24 && 
-	   fabs(T_Gen_PromptTau_LepDec_pdgId->at(0)) == 13 )  {
+	   fabs(T_Gen_PromptTau_LepDec_pdgId->at(0)) == 13 &&
+	   (T_Gen_PromptMuon_pdgId->at(0)*T_Gen_PromptTau_LepDec_pdgId->at(0)) < 0) {
 
 	p1 = TLorentzVector(T_Gen_PromptMuon_Px->at(0), 
 			    T_Gen_PromptMuon_Py->at(0),
@@ -1521,7 +1537,8 @@ void muonAnalyzer::SetGenInfo(TString Signal) {
 	   fabs(T_Gen_PromptTau_MpdgId->at(0))== 24 && 
 	   fabs(T_Gen_PromptTau_MpdgId->at(1))== 24 && 
 	   fabs(T_Gen_PromptTau_LepDec_pdgId->at(0)) == 13 && 
-	   fabs(T_Gen_PromptTau_LepDec_pdgId->at(1)) == 13) {
+	   fabs(T_Gen_PromptTau_LepDec_pdgId->at(1)) == 13 &&
+	   (T_Gen_PromptTau_LepDec_pdgId->at(0)*T_Gen_PromptTau_LepDec_pdgId->at(1)) < 0) {
 
 	p1 = TLorentzVector(T_Gen_PromptTau_LepDec_Px->at(0), 
 			    T_Gen_PromptTau_LepDec_Py->at(0),
@@ -1543,7 +1560,8 @@ void muonAnalyzer::SetGenInfo(TString Signal) {
     {
       
       if ( genPromptMuSize == 2 && fabs(T_Gen_PromptMuon_MpdgId->at(0)) == 23 
-	   && fabs(T_Gen_PromptMuon_MpdgId->at(1)) == 23 ) {
+	   && fabs(T_Gen_PromptMuon_MpdgId->at(1)) == 23 &&
+	   (T_Gen_PromptMuon_pdgId->at(0)*T_Gen_PromptMuon_pdgId->at(1)) < 0) {
 
 	p1 = TLorentzVector(T_Gen_PromptMuon_Px->at(0), 
 			    T_Gen_PromptMuon_Py->at(0),
@@ -1561,7 +1579,8 @@ void muonAnalyzer::SetGenInfo(TString Signal) {
       
       if ( genPromptMuSize == 1 && fabs(T_Gen_PromptMuon_MpdgId->at(0)) == 23 
 	   && genPromptTauSize == 1 && fabs(T_Gen_PromptTau_MpdgId->at(0))== 23 
-	   && fabs(T_Gen_PromptTau_LepDec_pdgId->at(0)) == 13 ) {
+	   && fabs(T_Gen_PromptTau_LepDec_pdgId->at(0)) == 13 &&
+	   (T_Gen_PromptMuon_pdgId->at(0)*T_Gen_PromptTau_LepDec_pdgId->at(0)) < 0) {
 
 	p1 = TLorentzVector(T_Gen_PromptMuon_Px->at(0), 
 			    T_Gen_PromptMuon_Py->at(0),
@@ -1582,7 +1601,8 @@ void muonAnalyzer::SetGenInfo(TString Signal) {
 	   fabs(T_Gen_PromptTau_MpdgId->at(0))== 23 && 
 	   fabs(T_Gen_PromptTau_MpdgId->at(1))== 23 && 
 	   fabs(T_Gen_PromptTau_LepDec_pdgId->at(0)) == 13 && 
-	   fabs(T_Gen_PromptTau_LepDec_pdgId->at(1)) == 13) {
+	   fabs(T_Gen_PromptTau_LepDec_pdgId->at(1)) == 13 &&
+	   (T_Gen_PromptTau_LepDec_pdgId->at(0)*T_Gen_PromptTau_LepDec_pdgId->at(1)) < 0) {
 
 	p1 = TLorentzVector(T_Gen_PromptTau_LepDec_Px->at(0), 
 			    T_Gen_PromptTau_LepDec_Py->at(0),
@@ -1600,7 +1620,7 @@ void muonAnalyzer::SetGenInfo(TString Signal) {
       
     }
 
-  if (Signal.Contains("DY") || Signal.Contains("GGHWW") && (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau)) {
+  if ((Signal.Contains("DY") || Signal.Contains("GGHWW")) && (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau)) {
 
     if ( p1.Perp() >= p2.Perp() ) {
 
@@ -1637,8 +1657,27 @@ bool muonAnalyzer::MatchGenToReco(int &mu1, int &mu2, TString signal) {
   if (signal.Contains("GGHWW") || signal.Contains("DY")) {
 
     mu1 = 0; mu2 = 1;
+
+    double dR11 = 999.0;
+    double dR12 = 999.0;
+    double dR21 = 999.0;
+    double dR22 = 999.0;
     
-    if ( G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) isMatched = true;
+    if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) { //|| G_isMuTau || G_isTauMu || G_isTauTau
+
+      //isMatched = true;
+
+      dR11 =  G_GEN_PromptMuon_4vec[0].DeltaR(G_Muon_4vec[0]);
+      dR22 =  G_GEN_PromptMuon_4vec[1].DeltaR(G_Muon_4vec[1]);
+
+      dR12 =  G_GEN_PromptMuon_4vec[0].DeltaR(G_Muon_4vec[1]);
+      dR21 =  G_GEN_PromptMuon_4vec[1].DeltaR(G_Muon_4vec[0]);
+
+      if (dR11 < 0.3 && dR22 < 0.3 && dR11 < dR12 && dR22 < dR21) isMatched = true;
+
+      //else if (dR12 < 0.3 && dR21 < 0.3 && dR12 < dR11 && dR21 < dR22) { mu1 = 1; mu2 = 0; isMatched = true; }
+
+    }
 
   }
 
@@ -1656,19 +1695,19 @@ bool muonAnalyzer::MatchGenToReco(int &mu1, int &mu2, TString signal) {
 	dR2 =  G_GEN_PromptMuon_4vec[0].DeltaR(G_Muon_4vec[1]);
       }
       
-      if ( dR1 < 0.4 && dR2 >= 0.4 ) { 
+      if ( dR1 < 0.3 && dR2 >= 0.3 ) { 
 
 	mu1 = 0; mu2 = 1; 
 
       }   
 
-      else if (dR2 < 0.4 && dR1 >= 0.4 ) {
+      else if (dR2 < 0.3 && dR1 >= 0.3 ) {
 
 	mu1 = 1; mu2 = 0;
 
       }
 
-      else if ( dR1 < 0.4 && dR2 < 0.4 ) {
+      else if ( dR1 < 0.3 && dR2 < 0.3 ) {
 
 	if (dR1 < dR2 ) { 
 	  mu1 = 0; mu2 = 1;
@@ -1678,6 +1717,8 @@ bool muonAnalyzer::MatchGenToReco(int &mu1, int &mu2, TString signal) {
 	}
 
       }
+
+      else   isMatched = false;
     
       double dRfake = 999.0;
       int isFakeMatched = 0;
@@ -1701,276 +1742,19 @@ bool muonAnalyzer::MatchGenToReco(int &mu1, int &mu2, TString signal) {
 // Compute efficiencies vs pt, eta and npv (GEN, RECO, ID and ISO)
 //------------------------------------------------------------------------------
 
-void muonAnalyzer::doEffsGEN(float weight, TString signal) {
+void muonAnalyzer::doEffsGEN(TString signal) {
 
-  doEffsPtGEN( 10.0,  20.0, weight, signal);
-  doEffsPtGEN( 20.0,  30.0, weight, signal);
-  doEffsPtGEN( 30.0,  40.0, weight, signal);
-  doEffsPtGEN( 40.0,  50.0, weight, signal);
-  doEffsPtGEN( 50.0,  70.0, weight, signal);
-  doEffsPtGEN( 70.0, 100.0, weight, signal);
-  doEffsPtGEN(100.0, 150.0, weight, signal);
-
-  doEffsEtaGEN(-2.4, -2.1, weight, signal);
-  doEffsEtaGEN(-2.1, -1.6, weight, signal);
-  doEffsEtaGEN(-1.6, -1.2, weight, signal);
-  doEffsEtaGEN(-1.2, -0.9, weight, signal);
-  doEffsEtaGEN(-0.9, -0.3, weight, signal);
-  doEffsEtaGEN(-0.3, -0.2, weight, signal);
-  doEffsEtaGEN(-0.2,  0.2, weight, signal);
-  doEffsEtaGEN( 0.2,  0.3, weight, signal);
-  doEffsEtaGEN( 0.3,  0.9, weight, signal);
-  doEffsEtaGEN( 0.9,  1.2, weight, signal);
-  doEffsEtaGEN( 1.2,  1.6, weight, signal);
-  doEffsEtaGEN( 1.6,  2.1, weight, signal);
-  doEffsEtaGEN( 2.1,  2.4, weight, signal);
-
-  doEffsNpvGEN(0.0,  10.0, weight, signal);
-  doEffsNpvGEN(10.0, 15.0, weight, signal);
-  doEffsNpvGEN(15.0, 20.0, weight, signal);
-  doEffsNpvGEN(20.0, 25.0, weight, signal);
-  doEffsNpvGEN(25.0, 30.0, weight, signal);
-  doEffsNpvGEN(30.0, 40.0, weight, signal);
-
-}
-
-void muonAnalyzer::doEffsRECO(int iMu, float weight) {
-
-  doEffsPtRECO(iMu,  10.0,  20.0, weight);
-  doEffsPtRECO(iMu,  20.0,  30.0, weight);
-  doEffsPtRECO(iMu,  30.0,  40.0, weight);
-  doEffsPtRECO(iMu,  40.0,  50.0, weight);
-  doEffsPtRECO(iMu,  50.0,  70.0, weight);
-  doEffsPtRECO(iMu,  70.0, 100.0, weight);
-  doEffsPtRECO(iMu, 100.0, 150.0, weight);
-
-  doEffsEtaRECO(iMu, -2.4, -2.1, weight);
-  doEffsEtaRECO(iMu, -2.1, -1.6, weight);
-  doEffsEtaRECO(iMu, -1.6, -1.2, weight);
-  doEffsEtaRECO(iMu, -1.2, -0.9, weight);
-  doEffsEtaRECO(iMu, -0.9, -0.3, weight);
-  doEffsEtaRECO(iMu, -0.3, -0.2, weight);
-  doEffsEtaRECO(iMu, -0.2,  0.2, weight);
-  doEffsEtaRECO(iMu,  0.2,  0.3, weight);
-  doEffsEtaRECO(iMu,  0.3,  0.9, weight);
-  doEffsEtaRECO(iMu,  0.9,  1.2, weight);
-  doEffsEtaRECO(iMu,  1.2,  1.6, weight);
-  doEffsEtaRECO(iMu,  1.6,  2.1, weight);
-  doEffsEtaRECO(iMu,  2.1,  2.4, weight);
-
-  doEffsNpvRECO(iMu,  0.0, 10.0, weight);
-  doEffsNpvRECO(iMu, 10.0, 15.0, weight);
-  doEffsNpvRECO(iMu, 15.0, 20.0, weight);
-  doEffsNpvRECO(iMu, 20.0, 25.0, weight);
-  doEffsNpvRECO(iMu, 25.0, 30.0, weight);
-  doEffsNpvRECO(iMu, 30.0, 40.0, weight);
-
-}
-
-void muonAnalyzer::doEffsPtRECO(int iMu, float inf, float sup, float weight) {
-
-
-  float mid = (inf+sup)/2;
-
-  if ( (T_Muon_Pt->at(iMu) > inf) && (T_Muon_Pt->at(iMu) <= sup)) {
-
-    h_Dilep_Eff_pt_AllMatched[iMu]->Fill(mid, weight);
-
-    if (T_Muon_IsGlobalMuon->at(iMu))
-      h_Dilep_Eff_pt_GLBID[iMu]->Fill(mid, weight);
-
-    if (T_Muon_IsPFMuon->at(iMu))
-      h_Dilep_Eff_pt_PFID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_GLBPFID[iMu])
-      h_Dilep_Eff_pt_GLBPFID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
-      h_Dilep_Eff_pt_fromPVID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
-      h_Dilep_Eff_pt_dzID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightIDbutdz[iMu])
-      h_Dilep_Eff_pt_TightIDbutdz[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightIDfromPV[iMu])
-      h_Dilep_Eff_pt_TightIDfromPV[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
-      h_Dilep_Eff_pt_TightIDAndfromPV[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightID[iMu])
-      h_Dilep_Eff_pt_TightID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_HWW_ID[iMu])
-      h_Dilep_Eff_pt_HWWID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOR03[iMu])
-      h_Dilep_Eff_pt_TightISOR03[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOR04[iMu])
-      h_Dilep_Eff_pt_TightISOR04[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOdBetaR03[iMu])
-      h_Dilep_Eff_pt_TightISOdBetaR03[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOdBetaR04[iMu])
-      h_Dilep_Eff_pt_TightISOdBetaR04[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOPFWeightsR03[iMu])
-      h_Dilep_Eff_pt_TightISOPFWeightsR03[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOPFWeightsR04[iMu])
-      h_Dilep_Eff_pt_TightISOPFWeightsR04[iMu]->Fill(mid, weight);
-
-  }
-
-}
-
-void muonAnalyzer::doEffsEtaRECO(int iMu, float inf, float sup, float weight) {
-
-
-  float mid = (inf+sup)/2;
-
-  if ( (T_Muon_Eta->at(iMu) > inf) && (T_Muon_Eta->at(iMu) <= sup)) {
-
-    h_Dilep_Eff_eta_AllMatched[iMu]->Fill(mid, weight);
-
-    if (T_Muon_IsGlobalMuon->at(iMu))
-      h_Dilep_Eff_eta_GLBID[iMu]->Fill(mid, weight);
-
-    if (T_Muon_IsPFMuon->at(iMu))
-      h_Dilep_Eff_eta_PFID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_GLBPFID[iMu])
-      h_Dilep_Eff_eta_GLBPFID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
-      h_Dilep_Eff_eta_fromPVID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
-      h_Dilep_Eff_eta_dzID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightIDbutdz[iMu])
-      h_Dilep_Eff_eta_TightIDbutdz[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightIDfromPV[iMu])
-      h_Dilep_Eff_eta_TightIDfromPV[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
-      h_Dilep_Eff_eta_TightIDAndfromPV[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightID[iMu])
-      h_Dilep_Eff_eta_TightID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_HWW_ID[iMu])
-      h_Dilep_Eff_eta_HWWID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOR03[iMu])
-      h_Dilep_Eff_eta_TightISOR03[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOR04[iMu])
-      h_Dilep_Eff_eta_TightISOR04[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOdBetaR03[iMu])
-      h_Dilep_Eff_eta_TightISOdBetaR03[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOdBetaR04[iMu])
-      h_Dilep_Eff_eta_TightISOdBetaR04[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOPFWeightsR03[iMu])
-      h_Dilep_Eff_eta_TightISOPFWeightsR03[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOPFWeightsR04[iMu])
-      h_Dilep_Eff_eta_TightISOPFWeightsR04[iMu]->Fill(mid, weight);
-
-  }
-
-}
-
-void muonAnalyzer::doEffsNpvRECO(int iMu, float inf, float sup, float weight) {
-
-
-  float mid = (inf+sup)/2;
-  int npv = 0;
-  npv = T_Vertex_z->size();
-
-  if ( (npv > inf) && (npv <= sup)) {
-
-    h_Dilep_Eff_npv_AllMatched[iMu]->Fill(mid, weight);
-
-    if (T_Muon_IsGlobalMuon->at(iMu))
-      h_Dilep_Eff_npv_GLBID[iMu]->Fill(mid, weight);
-
-    if (T_Muon_IsPFMuon->at(iMu))
-      h_Dilep_Eff_npv_PFID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_GLBPFID[iMu])
-      h_Dilep_Eff_npv_GLBPFID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
-      h_Dilep_Eff_npv_fromPVID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
-      h_Dilep_Eff_npv_dzID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightIDbutdz[iMu])
-      h_Dilep_Eff_npv_TightIDbutdz[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightIDfromPV[iMu])
-      h_Dilep_Eff_npv_TightIDfromPV[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
-      h_Dilep_Eff_npv_TightIDAndfromPV[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightID[iMu])
-      h_Dilep_Eff_npv_TightID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_HWW_ID[iMu])
-      h_Dilep_Eff_npv_HWWID[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOR03[iMu])
-      h_Dilep_Eff_npv_TightISOR03[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOR04[iMu])
-      h_Dilep_Eff_npv_TightISOR04[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOdBetaR03[iMu])
-      h_Dilep_Eff_npv_TightISOdBetaR03[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOdBetaR04[iMu])
-      h_Dilep_Eff_npv_TightISOdBetaR04[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOPFWeightsR03[iMu])
-      h_Dilep_Eff_npv_TightISOPFWeightsR03[iMu]->Fill(mid, weight);
-
-    if (G_Muon_TightISOPFWeightsR04[iMu])
-      h_Dilep_Eff_npv_TightISOPFWeightsR04[iMu]->Fill(mid, weight);
-
-  }
-
-}
-
-void muonAnalyzer::doEffsPtGEN(float inf, float sup, float weight, TString signal) {
-
-  float mid = (inf+sup)/2;
-
-  float pt1 = -999.0;
-  float pt2 = -999.0;
 
   if (signal.Contains("DY") || signal.Contains("GGHWW")) {
 
     if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
-
-      pt1 = G_GEN_PromptMuon_4vec[0].Perp();
-      pt2 = G_GEN_PromptMuon_4vec[1].Perp();
-
-      if ( pt1 > inf && pt1 < sup )
-	h_Dilep_Eff_pt_GEN[0]->Fill(mid, weight);
-      
-      if ( pt2 > inf && pt2 < sup )
-	h_Dilep_Eff_pt_GEN[1]->Fill(mid, weight);
+ 
+	h_Dilep_Eff_pt_GEN[0]->Fill(G_GEN_PromptMuon_4vec[0].Perp());
+	h_Dilep_Eff_pt_GEN[1]->Fill(G_GEN_PromptMuon_4vec[1].Perp());
+	h_Dilep_Eff_eta_GEN[0]->Fill(G_GEN_PromptMuon_4vec[0].Eta());
+	h_Dilep_Eff_eta_GEN[1]->Fill(G_GEN_PromptMuon_4vec[1].Eta());
+	h_Dilep_Eff_npv_GEN[0]->Fill(T_Vertex_z->size());
+	h_Dilep_Eff_npv_GEN[1]->Fill(T_Vertex_z->size());
 
     }
 
@@ -1978,100 +1762,447 @@ void muonAnalyzer::doEffsPtGEN(float inf, float sup, float weight, TString signa
 
   else if (signal.Contains("Wjets")) {
 
-    if (G_isMuMu || G_isTauMu)
-      pt1 = G_GEN_PromptMuon_4vec[0].Perp();
+    if (G_isMuMu || G_isTauMu) {
 
-    if ( pt1 > inf && pt1 < sup )
-      h_Dilep_Eff_pt_GEN[0]->Fill(mid, weight);
+      h_Dilep_Eff_pt_GEN[0]->Fill(G_GEN_PromptMuon_4vec[0].Perp());
+      h_Dilep_Eff_eta_GEN[0]->Fill(G_GEN_PromptMuon_4vec[0].Eta());
+      h_Dilep_Eff_npv_GEN[0]->Fill(T_Vertex_z->size());
+
+    }
 
   }
     
 
-  if ( (T_Muon_Pt->at(0) > inf) && (T_Muon_Pt->at(0) <= sup)) 
-    h_Dilep_Eff_pt_AllRECO[0]->Fill(mid, weight);
+  if ( T_Muon_Px->size() > 0 ) {
+    h_Dilep_Eff_pt_AllRECO[0]->Fill(T_Muon_Px->at(0));
+    h_Dilep_Eff_eta_AllRECO[0]->Fill(T_Muon_Eta->at(0));
+    h_Dilep_Eff_npv_AllRECO[0]->Fill(T_Vertex_z->size());
+  }
 
-  if ( (T_Muon_Pt->at(1) > inf) && (T_Muon_Pt->at(1) <= sup)) 
-    h_Dilep_Eff_pt_AllRECO[1]->Fill(mid, weight);
+  if ( T_Muon_Px->size() > 1 ) {
+    h_Dilep_Eff_pt_AllRECO[1]->Fill(T_Muon_Px->at(1));
+    h_Dilep_Eff_eta_AllRECO[1]->Fill(T_Muon_Eta->at(1));
+    h_Dilep_Eff_npv_AllRECO[1]->Fill(T_Vertex_z->size());
+  }
 
 
 }
 
-void muonAnalyzer::doEffsEtaGEN(float inf, float sup, float weight, TString signal) {
+void muonAnalyzer::doEffsRECO(int iMu, int indexMuon) {
 
-  float mid = (inf+sup)/2;
+  double mll = (G_Muon_4vec[0] + G_Muon_4vec[1]).M();
+  //if (mll > 70 && mll < 130) {
 
-  float eta1 = -999.0;
-  float eta2 = -999.0;
+  double pt  = T_Muon_Pt->at(iMu); 
+  double eta = T_Muon_Eta->at(iMu);
+  double npv = T_Vertex_z->size();
 
-  if (signal.Contains("DY") || signal.Contains("GGHWW")) {
+  if ( pt > 10 ) {
 
-    if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
+    h_Dilep_Eff_pt_AllMatched[indexMuon]->Fill(pt);
+    h_Dilep_Eff_eta_AllMatched[indexMuon]->Fill(eta);
+    h_Dilep_Eff_npv_AllMatched[indexMuon]->Fill(npv);
 
-      eta1 = G_GEN_PromptMuon_4vec[0].Eta();
-      eta2 = G_GEN_PromptMuon_4vec[1].Eta();
+    if (T_Muon_IsGlobalMuon->at(iMu)) {
+      h_Dilep_Eff_pt_GLBID[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_GLBID[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_GLBID[indexMuon]->Fill(npv);
+    }
 
-      if ( eta1 > inf && eta1 < sup )
-	h_Dilep_Eff_eta_GEN[0]->Fill(mid, weight);
+    if (T_Muon_IsPFMuon->at(iMu)) {
+      h_Dilep_Eff_pt_PFID[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_PFID[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_PFID[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_GLBPFID[iMu]) {
+      h_Dilep_Eff_pt_GLBPFID[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_GLBPFID[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_GLBPFID[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_TightID[iMu]) {
+      h_Dilep_Eff_pt_TightID[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_TightID[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_TightID[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_dzID[iMu]) {
+      h_Dilep_Eff_pt_dzID[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_dzID[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_dzID[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_TightIDbutdz[iMu]) {
+      h_Dilep_Eff_pt_TightIDbutdz[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_TightIDbutdz[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_TightIDbutdz[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_HWW_ID[iMu]) {
+      h_Dilep_Eff_pt_HWWID[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_HWWID[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_HWWID[indexMuon]->Fill(npv);
+    }
       
-      if ( eta2 > inf && eta2 < sup )
-	h_Dilep_Eff_eta_GEN[1]->Fill(mid, weight);
+    // if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
+    //   h_Dilep_Eff_eta_fromPVID[iMu]->Fill(mid, weight);
 
+    // if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
+    //   h_Dilep_Eff_eta_dzID[iMu]->Fill(mid, weight);
+
+    // if (G_Muon_TightIDfromPV[iMu])
+    //   h_Dilep_Eff_eta_TightIDfromPV[iMu]->Fill(mid, weight);
+
+    // if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
+    //   h_Dilep_Eff_eta_TightIDAndfromPV[iMu]->Fill(mid, weight);
+
+
+    if (G_Muon_TightISOR03[iMu]) {
+      h_Dilep_Eff_pt_TightISOR03[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_TightISOR03[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_TightISOR03[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_TightISOR04[iMu]) {
+      h_Dilep_Eff_pt_TightISOR04[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_TightISOR04[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_TightISOR04[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_TightISOdBetaR03[iMu]) {
+      h_Dilep_Eff_pt_TightISOdBetaR03[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_TightISOdBetaR03[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_TightISOdBetaR03[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_TightISOdBetaR04[iMu]) {
+      h_Dilep_Eff_pt_TightISOdBetaR04[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_TightISOdBetaR04[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_TightISOdBetaR04[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_TightISOPFWeightsR03[iMu]) {
+      h_Dilep_Eff_pt_TightISOPFWeightsR03[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_TightISOPFWeightsR03[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_TightISOPFWeightsR03[indexMuon]->Fill(npv);
+    }
+
+    if (G_Muon_TightISOPFWeightsR04[iMu]) {
+      h_Dilep_Eff_pt_TightISOPFWeightsR04[indexMuon]->Fill(pt);
+      h_Dilep_Eff_eta_TightISOPFWeightsR04[indexMuon]->Fill(eta);
+      h_Dilep_Eff_npv_TightISOPFWeightsR04[indexMuon]->Fill(npv);
     }
 
   }
-
-  else if (signal.Contains("Wjets")) {
-
-    if (G_isMuMu || G_isTauMu)
-      eta1 = G_GEN_PromptMuon_4vec[0].Eta();
-
-    if ( eta1 > inf && eta1 < sup )
-      h_Dilep_Eff_eta_GEN[0]->Fill(mid, weight);
-
-  }
-    
-
-  if ( (T_Muon_Eta->at(0) > inf) && (T_Muon_Eta->at(0) <= sup)) 
-    h_Dilep_Eff_eta_AllRECO[0]->Fill(mid, weight);
-
-  if ( (T_Muon_Eta->at(1) > inf) && (T_Muon_Eta->at(1) <= sup)) 
-    h_Dilep_Eff_eta_AllRECO[1]->Fill(mid, weight);
 
 }
 
-void muonAnalyzer::doEffsNpvGEN(float inf, float sup, float weight, TString signal) {
+// void muonAnalyzer::doEffsPtRECO(int iMu, float inf, float sup, float weight) {
 
-  float mid = (inf+sup)/2;
 
-  int npv = 0;
-  npv = T_Vertex_z->size();
+//   float mid = (inf+sup)/2;
 
-  if ( (npv > inf) && (npv <= sup)) {
+//   if ( (T_Muon_Pt->at(iMu) > inf) && (T_Muon_Pt->at(iMu) <= sup)) {
 
-    if (signal.Contains("DY") || signal.Contains("GGHWW")) {
+//     h_Dilep_Eff_pt_AllMatched[iMu]->Fill(mid, weight);
 
-      if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
+//     if (T_Muon_IsGlobalMuon->at(iMu))
+//       h_Dilep_Eff_pt_GLBID[iMu]->Fill(mid, weight);
 
-	h_Dilep_Eff_npv_GEN[0]->Fill(mid, weight);
-	h_Dilep_Eff_npv_GEN[1]->Fill(mid, weight);
+//     if (T_Muon_IsPFMuon->at(iMu))
+//       h_Dilep_Eff_pt_PFID[iMu]->Fill(mid, weight);
 
-      }
+//     if (G_Muon_GLBPFID[iMu])
+//       h_Dilep_Eff_pt_GLBPFID[iMu]->Fill(mid, weight);
 
-    }
+//     if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
+//       h_Dilep_Eff_pt_fromPVID[iMu]->Fill(mid, weight);
 
-    else if (signal.Contains("Wjets")) {
+//     if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
+//       h_Dilep_Eff_pt_dzID[iMu]->Fill(mid, weight);
 
-      if (G_isMuMu || G_isTauMu) 
-	h_Dilep_Eff_npv_GEN[0]->Fill(mid, weight);
+//     if (G_Muon_TightIDbutdz[iMu])
+//       h_Dilep_Eff_pt_TightIDbutdz[iMu]->Fill(mid, weight);
 
-    }
+//     if (G_Muon_TightIDfromPV[iMu])
+//       h_Dilep_Eff_pt_TightIDfromPV[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
+//       h_Dilep_Eff_pt_TightIDAndfromPV[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightID[iMu])
+//       h_Dilep_Eff_pt_TightID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_HWW_ID[iMu])
+//       h_Dilep_Eff_pt_HWWID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOR03[iMu])
+//       h_Dilep_Eff_pt_TightISOR03[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOR04[iMu])
+//       h_Dilep_Eff_pt_TightISOR04[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOdBetaR03[iMu])
+//       h_Dilep_Eff_pt_TightISOdBetaR03[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOdBetaR04[iMu])
+//       h_Dilep_Eff_pt_TightISOdBetaR04[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOPFWeightsR03[iMu])
+//       h_Dilep_Eff_pt_TightISOPFWeightsR03[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOPFWeightsR04[iMu])
+//       h_Dilep_Eff_pt_TightISOPFWeightsR04[iMu]->Fill(mid, weight);
+
+//   }
+
+// }
+
+// void muonAnalyzer::doEffsEtaRECO(int iMu, float inf, float sup, float weight) {
+
+
+//   float mid = (inf+sup)/2;
+
+//   if ( (T_Muon_Eta->at(iMu) > inf) && (T_Muon_Eta->at(iMu) <= sup)) {
+
+//     h_Dilep_Eff_eta_AllMatched[iMu]->Fill(mid, weight);
+
+//     if (T_Muon_IsGlobalMuon->at(iMu))
+//       h_Dilep_Eff_eta_GLBID[iMu]->Fill(mid, weight);
+
+//     if (T_Muon_IsPFMuon->at(iMu))
+//       h_Dilep_Eff_eta_PFID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_GLBPFID[iMu])
+//       h_Dilep_Eff_eta_GLBPFID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
+//       h_Dilep_Eff_eta_fromPVID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
+//       h_Dilep_Eff_eta_dzID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightIDbutdz[iMu])
+//       h_Dilep_Eff_eta_TightIDbutdz[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightIDfromPV[iMu])
+//       h_Dilep_Eff_eta_TightIDfromPV[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
+//       h_Dilep_Eff_eta_TightIDAndfromPV[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightID[iMu])
+//       h_Dilep_Eff_eta_TightID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_HWW_ID[iMu])
+//       h_Dilep_Eff_eta_HWWID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOR03[iMu])
+//       h_Dilep_Eff_eta_TightISOR03[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOR04[iMu])
+//       h_Dilep_Eff_eta_TightISOR04[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOdBetaR03[iMu])
+//       h_Dilep_Eff_eta_TightISOdBetaR03[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOdBetaR04[iMu])
+//       h_Dilep_Eff_eta_TightISOdBetaR04[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOPFWeightsR03[iMu])
+//       h_Dilep_Eff_eta_TightISOPFWeightsR03[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOPFWeightsR04[iMu])
+//       h_Dilep_Eff_eta_TightISOPFWeightsR04[iMu]->Fill(mid, weight);
+
+//   }
+
+// }
+
+// void muonAnalyzer::doEffsNpvRECO(int iMu, float inf, float sup, float weight) {
+
+
+//   float mid = (inf+sup)/2;
+//   int npv = 0;
+//   npv = T_Vertex_z->size();
+
+//   if ( (npv > inf) && (npv <= sup)) {
+
+//     h_Dilep_Eff_npv_AllMatched[iMu]->Fill(mid, weight);
+
+//     if (T_Muon_IsGlobalMuon->at(iMu))
+//       h_Dilep_Eff_npv_GLBID[iMu]->Fill(mid, weight);
+
+//     if (T_Muon_IsPFMuon->at(iMu))
+//       h_Dilep_Eff_npv_PFID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_GLBPFID[iMu])
+//       h_Dilep_Eff_npv_GLBPFID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
+//       h_Dilep_Eff_npv_fromPVID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
+//       h_Dilep_Eff_npv_dzID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightIDbutdz[iMu])
+//       h_Dilep_Eff_npv_TightIDbutdz[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightIDfromPV[iMu])
+//       h_Dilep_Eff_npv_TightIDfromPV[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
+//       h_Dilep_Eff_npv_TightIDAndfromPV[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightID[iMu])
+//       h_Dilep_Eff_npv_TightID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_HWW_ID[iMu])
+//       h_Dilep_Eff_npv_HWWID[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOR03[iMu])
+//       h_Dilep_Eff_npv_TightISOR03[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOR04[iMu])
+//       h_Dilep_Eff_npv_TightISOR04[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOdBetaR03[iMu])
+//       h_Dilep_Eff_npv_TightISOdBetaR03[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOdBetaR04[iMu])
+//       h_Dilep_Eff_npv_TightISOdBetaR04[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOPFWeightsR03[iMu])
+//       h_Dilep_Eff_npv_TightISOPFWeightsR03[iMu]->Fill(mid, weight);
+
+//     if (G_Muon_TightISOPFWeightsR04[iMu])
+//       h_Dilep_Eff_npv_TightISOPFWeightsR04[iMu]->Fill(mid, weight);
+
+//   }
+
+// }
+
+// void muonAnalyzer::doEffsPtGEN(float inf, float sup, float weight, TString signal) {
+
+//   float mid = (inf+sup)/2;
+
+//   float pt1 = -999.0;
+//   float pt2 = -999.0;
+
+//   if (signal.Contains("DY") || signal.Contains("GGHWW")) {
+
+//     if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
+
+//       pt1 = G_GEN_PromptMuon_4vec[0].Perp();
+//       pt2 = G_GEN_PromptMuon_4vec[1].Perp();
+
+//       if ( pt1 > inf && pt1 < sup )
+// 	h_Dilep_Eff_pt_GEN[0]->Fill(mid, weight);
+      
+//       if ( pt2 > inf && pt2 < sup )
+// 	h_Dilep_Eff_pt_GEN[1]->Fill(mid, weight);
+
+//     }
+
+//   }
+
+//   else if (signal.Contains("Wjets")) {
+
+//     if (G_isMuMu || G_isTauMu)
+//       pt1 = G_GEN_PromptMuon_4vec[0].Perp();
+
+//     if ( pt1 > inf && pt1 < sup )
+//       h_Dilep_Eff_pt_GEN[0]->Fill(mid, weight);
+
+//   }
     
-    h_Dilep_Eff_npv_AllRECO[0]->Fill(mid, weight);
-    h_Dilep_Eff_npv_AllRECO[1]->Fill(mid, weight);
+
+//   if ( (T_Muon_Px->size() > 0) && (T_Muon_Pt->at(0) > inf) && (T_Muon_Pt->at(0) <= sup) ) 
+//     h_Dilep_Eff_pt_AllRECO[0]->Fill(mid, weight);
+
+//   if ( (T_Muon_Px->size() > 1) && (T_Muon_Pt->at(1) > inf) && (T_Muon_Pt->at(1) <= sup) ) 
+//     h_Dilep_Eff_pt_AllRECO[1]->Fill(mid, weight);
+
+
+// }
+
+// void muonAnalyzer::doEffsEtaGEN(float inf, float sup, float weight, TString signal) {
+
+//   float mid = (inf+sup)/2;
+
+//   float eta1 = -999.0;
+//   float eta2 = -999.0;
+
+//   if (signal.Contains("DY") || signal.Contains("GGHWW")) {
+
+//     if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
+
+//       eta1 = G_GEN_PromptMuon_4vec[0].Eta();
+//       eta2 = G_GEN_PromptMuon_4vec[1].Eta();
+
+//       if ( eta1 > inf && eta1 < sup )
+// 	h_Dilep_Eff_eta_GEN[0]->Fill(mid, weight);
+      
+//       if ( eta2 > inf && eta2 < sup )
+// 	h_Dilep_Eff_eta_GEN[1]->Fill(mid, weight);
+
+//     }
+
+//   }
+
+//   else if (signal.Contains("Wjets")) {
+
+//     if (G_isMuMu || G_isTauMu)
+//       eta1 = G_GEN_PromptMuon_4vec[0].Eta();
+
+//     if ( eta1 > inf && eta1 < sup )
+//       h_Dilep_Eff_eta_GEN[0]->Fill(mid, weight);
+
+//   }
+    
+
+//   if ( (T_Muon_Px->size() > 0) && (T_Muon_Eta->at(0) > inf) && (T_Muon_Eta->at(0) <= sup)) 
+//     h_Dilep_Eff_eta_AllRECO[0]->Fill(mid, weight);
+
+//   if ( (T_Muon_Px->size() > 1) && (T_Muon_Eta->at(1) > inf) && (T_Muon_Eta->at(1) <= sup)) 
+//     h_Dilep_Eff_eta_AllRECO[1]->Fill(mid, weight);
+
+// }
+
+// void muonAnalyzer::doEffsNpvGEN(float inf, float sup, float weight, TString signal) {
+
+//   float mid = (inf+sup)/2;
+
+//   int npv = 0;
+//   npv = T_Vertex_z->size();
+
+//   if ( (npv > inf) && (npv <= sup)) {
+
+//     if (signal.Contains("DY") || signal.Contains("GGHWW")) {
+
+//       if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
+
+// 	h_Dilep_Eff_npv_GEN[0]->Fill(mid, weight);
+// 	h_Dilep_Eff_npv_GEN[1]->Fill(mid, weight);
+
+//       }
+
+//     }
+
+//     else if (signal.Contains("Wjets")) {
+
+//       if (G_isMuMu || G_isTauMu) 
+// 	h_Dilep_Eff_npv_GEN[0]->Fill(mid, weight);
+
+//     }
+    
+//     if (T_Muon_Px->size() > 0) h_Dilep_Eff_npv_AllRECO[0]->Fill(mid, weight);
+//     if (T_Muon_Px->size() > 1) h_Dilep_Eff_npv_AllRECO[1]->Fill(mid, weight);
   
-  }
+//   }
 
-}
+// }
 
 
 //------------------------------------------------------------------------------
@@ -2778,12 +2909,28 @@ void muonAnalyzer::FillPtEta(int iMu1, int iMu2, double weight, string levelCut)
 
   if (levelCut == "Dilep") { 
 
-    if (G_Muon_TightID[0] && G_Muon_TightID[1])    {
+    
+    h_Dilep_pt[0] ->Fill(T_Muon_Pt->at(iMu1));
+    h_Dilep_eta[0]->Fill(T_Muon_Eta->at(iMu1));
+    h_Dilep_npv[0]->Fill(T_Vertex_z->size());
 
-      h_Dilep_TightMu_pt[0] ->Fill(T_Muon_Pt->at(iMu1), weight);
-      h_Dilep_TightMu_pt[1] ->Fill(T_Muon_Pt->at(iMu2), weight);
-      h_Dilep_TightMu_eta[0]->Fill(T_Muon_Eta->at(iMu1), weight);
-      h_Dilep_TightMu_eta[1]->Fill(T_Muon_Eta->at(iMu2), weight);
+    h_Dilep_pt[1] ->Fill(T_Muon_Pt->at(iMu2));
+    h_Dilep_eta[1]->Fill(T_Muon_Eta->at(iMu2));
+    h_Dilep_npv[1]->Fill(T_Vertex_z->size());
+
+    if (G_Muon_TightID[0]) {
+
+      h_Dilep_TightMu_pt[0] ->Fill(T_Muon_Pt->at(iMu1));
+      h_Dilep_TightMu_eta[0]->Fill(T_Muon_Eta->at(iMu1));
+      h_Dilep_TightMu_npv[0]->Fill(T_Vertex_z->size());
+
+    }
+
+    if (G_Muon_TightID[1])    {
+
+      h_Dilep_TightMu_pt[1] ->Fill(T_Muon_Pt->at(iMu2));
+      h_Dilep_TightMu_eta[1]->Fill(T_Muon_Eta->at(iMu2));
+      h_Dilep_TightMu_npv[1]->Fill(T_Vertex_z->size());
 
     }
 
@@ -3404,10 +3551,19 @@ void muonAnalyzer::SetDataMembersAtTermination() {
   h_Dilep_TightMu_StaHits[0] = ((TH1F*) FindOutput("h_Dilep_TightMu_StaHits_Mu1"));
   h_Dilep_TightMu_StaHits[1] = ((TH1F*) FindOutput("h_Dilep_TightMu_StaHits_Mu2")); 
 
+  h_Dilep_pt[0] = ((TH1F*) FindOutput("h_Dilep_pt_Mu1"));
+  h_Dilep_pt[1] = ((TH1F*) FindOutput("h_Dilep_pt_Mu2"));
   h_Dilep_TightMu_pt[0] = ((TH1F*) FindOutput("h_Dilep_TightMu_pt_Mu1"));
   h_Dilep_TightMu_pt[1] = ((TH1F*) FindOutput("h_Dilep_TightMu_pt_Mu2"));
-  h_Dilep_TightMu_eta[0] = ((TH1F*) FindOutput("h_WWlevel_TightMu_eta_Mu1"));
-  h_Dilep_TightMu_eta[1] = ((TH1F*) FindOutput("h_WWlevel_TightMu_eta_Mu2"));
+  h_Dilep_eta[0] = ((TH1F*) FindOutput("h_Dilep_eta_Mu1"));
+  h_Dilep_eta[1] = ((TH1F*) FindOutput("h_Dilep_eta_Mu2"));
+  h_Dilep_TightMu_eta[0] = ((TH1F*) FindOutput("h_Dilep_TightMu_eta_Mu1"));
+  h_Dilep_TightMu_eta[1] = ((TH1F*) FindOutput("h_Dilep_TightMu_eta_Mu2"));
+  h_Dilep_npv[0] = ((TH1F*) FindOutput("h_Dilep_npv_Mu1"));
+  h_Dilep_npv[1] = ((TH1F*) FindOutput("h_Dilep_npv_Mu2"));
+  h_Dilep_TightMu_npv[0] = ((TH1F*) FindOutput("h_Dilep_TightMu_npv_Mu1"));
+  h_Dilep_TightMu_npv[1] = ((TH1F*) FindOutput("h_Dilep_TightMu_npv_Mu2"));
+
   //h_Dilep_TightMu_PFIsoBeta[0] = ((TH1F*) FindOutput("h_Dilep_TightMu_PFIsoBeta_Mu1"));
   //h_Dilep_TightMu_PFIsoBeta[1] = ((TH1F*) FindOutput("h_Dilep_TightMu_PFIsoBeta_Mu2"));
   h_Dilep_TightMu_RelEff[0] = ((TH1F*) FindOutput("h_Dilep_TightMu_RelEff_Mu1"));

@@ -131,7 +131,7 @@ void RunPROOF_muonAnalyzer(const char* data) {
   else if (Signal=="MC_GGHWW_PU20bx25") {
 
     //gPAFOptions->dataFiles.push_back( "/gpfs/csic_projects/cms/calderon/TreesCSA14/Tree_GluGluToHToWWTo2LAndTau2Nu_M-125_13TeV_PU20bx25.root");
-    gPAFOptions->dataFiles.push_back("/gpfs/csic_projects/cms/piedra/top/PU20bx25_PHYS14/Skim_2L_Pt17_8/Tree_GluGluToHToWW.root");
+    gPAFOptions->dataFiles.push_back("/gpfs/csic_projects/tier3data/TreesPHYS14/PU20bx25/Tree_HWW125.root");
     
     bool isdata = false;
     int nEventsInTheSample = 99555; 
@@ -144,7 +144,7 @@ void RunPROOF_muonAnalyzer(const char* data) {
   else if (Signal=="MC_Wjets_PU20bx25") {
 
     //gPAFOptions->dataFiles.push_back(dataPath + "/PU20bx25/Tree_WJets_Madgraph.root");
-    gPAFOptions->dataFiles.push_back("/gpfs/csic_projects/cms/piedra/top/PU20bx25_PHYS14/Skim_2L_Pt17_8/Tree_WJetsToLNu.root");
+    gPAFOptions->dataFiles.push_back("/gpfs/csic_projects/tier3data/TreesPHYS14/PU20bx25/Tree_WJets_Madgraph.root");
       
     bool isdata = false;
     int nEventsInTheSample = 10017462; 
@@ -156,7 +156,7 @@ void RunPROOF_muonAnalyzer(const char* data) {
 
   else if (Signal=="MC_DY_PU20bx25") {
 
-    gPAFOptions->dataFiles.push_back("/gpfs/csic_projects/cms/piedra/top/PU20bx25_PHYS14/Skim_2L_Pt17_8/Tree_DYJetsToLL.root");
+    gPAFOptions->dataFiles.push_back("/gpfs/csic_projects/tier3data/TreesPHYS14/PU20bx25/Tree_ZJets_Madgraph.root");
    
     bool isdata = false;
     int nEventsInTheSample = 2829164; 

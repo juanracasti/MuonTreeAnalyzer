@@ -42,14 +42,14 @@ class muonAnalyzer: public PAFAnalysis{
    bool                      passHWWMuCuts(int);
    void                      SetGenInfo(TString);
    bool                      MatchGenToReco(int&, int&, TString);
-   void                      doEffsGEN(float, TString);
-   void                      doEffsRECO(int, float);
-   void                      doEffsPtGEN(float, float, float, TString);
-   void                      doEffsEtaGEN(float, float, float, TString);
-   void                      doEffsNpvGEN(float, float, float, TString);
-   void                      doEffsPtRECO(int, float, float, float);
-   void                      doEffsEtaRECO(int, float, float, float);
-   void                      doEffsNpvRECO(int, float, float, float);
+   void                      doEffsGEN(TString);
+   void                      doEffsRECO(int, int);
+   //void                      doEffsPtGEN(float, float, float, TString);
+   //void                      doEffsEtaGEN(float, float, float, TString);
+   //void                      doEffsNpvGEN(float, float, float, TString);
+   //void                      doEffsPtRECO(int, float, float, float);
+   //void                      doEffsEtaRECO(int, float, float, float);
+   //void                      doEffsNpvRECO(int, float, float, float);
    void                      FillRelEff(string, int, int, double, int);
    void                      Filldz2D(int, int, double, int);
    void                      FillPFIso(int, int, double, string);
@@ -257,8 +257,12 @@ class muonAnalyzer: public PAFAnalysis{
    //TH1F       *h_Dilep_TightMu_PFPh [2]; 
    //TH1F       *h_Dilep_TightMu_PFRho [2];
 
+   TH1F       *h_Dilep_pt [2];
    TH1F       *h_Dilep_TightMu_pt [2];
+   TH1F       *h_Dilep_eta [2];
    TH1F       *h_Dilep_TightMu_eta [2];
+   TH1F       *h_Dilep_npv [2];
+   TH1F       *h_Dilep_TightMu_npv [2];
    //   TH1F       *h_Dilep_TightMu_PFIsoBeta [2];
    TH1F       *h_Dilep_TightMu_RelEff [2];
    TH1F       *h_Dilep_Chi2 [2];
