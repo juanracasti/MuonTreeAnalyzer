@@ -82,7 +82,7 @@ void RunPROOF_muonAnalyzer(const char* data) {
    //TString dataPath="/gpfs/csic_projects/cms/arodrig/"; //IFCA   (gridui)
   // 1) Set the base path to files
   // TString dataPath="/gpfs/csic_projects/cms/calderon/TreesCSA14"; //IFCA   (gridui)
-  TString dataPath="/gpfs/csic_projects/cms/jfernan/TreesPHYS14";
+  TString dataPath="/gpfs/csic_projects/cms/jfernan/TreesPHYS14/PU20bx25.old/";
   // TString dataPath="/gpfs/csic_projects/tier3data"; //IFCA   (gridui)
    //        TString dataPath="/hadoop";                      //UniOvi (fanaeui)
   //   TString dataPath="/pool/data1/MiniTrees";        //CERN   (cmsovd02)
@@ -131,7 +131,7 @@ void RunPROOF_muonAnalyzer(const char* data) {
   else if (Signal=="MC_GGHWW_PU20bx25") {
 
     //gPAFOptions->dataFiles.push_back( "/gpfs/csic_projects/cms/calderon/TreesCSA14/Tree_GluGluToHToWWTo2LAndTau2Nu_M-125_13TeV_PU20bx25.root");
-    gPAFOptions->dataFiles.push_back("/gpfs/csic_projects/tier3data/TreesPHYS14/PU20bx25/Tree_HWW125.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_HWW125.root");
     
     bool isdata = false;
     int nEventsInTheSample = 99555; 
@@ -144,7 +144,7 @@ void RunPROOF_muonAnalyzer(const char* data) {
   else if (Signal=="MC_Wjets_PU20bx25") {
 
     //gPAFOptions->dataFiles.push_back(dataPath + "/PU20bx25/Tree_WJets_Madgraph.root");
-    gPAFOptions->dataFiles.push_back("/gpfs/csic_projects/tier3data/TreesPHYS14/PU20bx25/Tree_WJets_Madgraph.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_WJets_Madgraph.root");
       
     bool isdata = false;
     int nEventsInTheSample = 10017462; 
@@ -156,12 +156,36 @@ void RunPROOF_muonAnalyzer(const char* data) {
 
   else if (Signal=="MC_DY_PU20bx25") {
 
-    gPAFOptions->dataFiles.push_back("/gpfs/csic_projects/tier3data/TreesPHYS14/PU20bx25/Tree_ZJets_Madgraph.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_ZJets_Madgraph.root");
    
     bool isdata = false;
     int nEventsInTheSample = 2829164; 
     //int nEventsInTheSample = 956666; 
     double xSection =  6025.2;
+    int whichRun = 2;
+
+ }
+
+  else if (Signal=="DY_ISO_PU20bx25") {
+
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_ZJets_Madgraph.root");
+   
+    bool isdata = false;
+    int nEventsInTheSample = 2829164; 
+    //int nEventsInTheSample = 956666; 
+    double xSection =  6025.2;
+    int whichRun = 2;
+
+ }
+
+  else if (Signal=="QCD_ISO_PU20bx25") {
+
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_QCD_MuEnrichedPt15.root");
+   
+    bool isdata = false;
+    int nEventsInTheSample = 787547; 
+    //int nEventsInTheSample = 956666; 
+    double xSection =  1;
     int whichRun = 2;
 
  }

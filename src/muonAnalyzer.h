@@ -39,7 +39,7 @@ class muonAnalyzer: public PAFAnalysis{
    virtual void              Summary(); 
    void                      GetAllMuons();
    bool                      passTightMuCuts(int, float, float, float, int, int);
-   bool                      passHWWMuCuts(int);
+   bool                      passHWWMuCuts(int, float, float, float);
    void                      SetGenInfo(TString);
    bool                      MatchGenToReco(int&, int&, TString);
    void                      doEffsGEN(TString);
@@ -55,8 +55,9 @@ class muonAnalyzer: public PAFAnalysis{
    void                      FillPFIso(int, int, double, string);
    void                      FillTypeMu(double, string);
    void                      FillPtEta(int, int, double, string);
-   bool                      passPFIso (int, string);
-   double                    getPFRelIso (int, string);	
+   bool                      passPFIso (int, string, double);
+   double                    getPFRelIso (int, string);
+   void                      ISORocCurve(int, int);
    void                      GetAllJets(double);
    Int_t                     SelectedVertexIndex();
    Int_t                     SelectedVertexIndex(int);
@@ -86,12 +87,17 @@ class muonAnalyzer: public PAFAnalysis{
    //** MUONS
    std::vector<TLorentzVector> G_Muon_4vec;
    std::vector<bool>           G_Muon_GLBPFID;
+   std::vector<bool>           G_Muon_GLBorTRKID;
    std::vector<bool>           G_Muon_HWW_ID;
+   std::vector<bool>           G_Muon_HWWIDbutKink;
    std::vector<bool>           G_Muon_dzID;
    std::vector<bool>           G_Muon_fromPVID;
    std::vector<bool>           G_Muon_TightIDbutdz;
    std::vector<bool>           G_Muon_TightIDfromPV;
    std::vector<bool>           G_Muon_TightID;
+   std::vector<bool>           G_Muon_TightIDdxyHWW;
+   std::vector<bool>           G_Muon_TightIDdzHWW;
+   std::vector<bool>           G_Muon_TightIDTrkKink;
 
    std::vector<bool>           G_Muon_ISOR03;
    std::vector<bool>           G_Muon_ISOR04;
@@ -263,6 +269,14 @@ class muonAnalyzer: public PAFAnalysis{
    TH1F       *h_Dilep_TightMu_eta [2];
    TH1F       *h_Dilep_npv [2];
    TH1F       *h_Dilep_TightMu_npv [2];
+
+   TH1F       *h_Dilep_ISORocCurve_SB_R04;
+   TH1F       *h_Dilep_ISORocCurve_SB_dBetaR04;
+   TH1F       *h_Dilep_ISORocCurve_SB_PFWeightsR04;
+   TH1F       *h_Dilep_ISORocCurve_R04[2];
+   TH1F       *h_Dilep_ISORocCurve_dBetaR04[2];
+   TH1F       *h_Dilep_ISORocCurve_PFWeightsR04[2];
+
    //   TH1F       *h_Dilep_TightMu_PFIsoBeta [2];
    TH1F       *h_Dilep_TightMu_RelEff [2];
    TH1F       *h_Dilep_Chi2 [2];
