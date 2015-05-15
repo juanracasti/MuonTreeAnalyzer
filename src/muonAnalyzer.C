@@ -1904,11 +1904,11 @@ bool muonAnalyzer::MatchGenToReco(int &mu1, int &mu2, TString signal) {
 
       //isMatched = true;
 
-      dR11 =  G_GEN_PromptMuon_4vec[0].DeltaR(G_Muon_4vec[0]);
-      dR22 =  G_GEN_PromptMuon_4vec[1].DeltaR(G_Muon_4vec[1]);
+      dR11 =  G_Muon_4vec[0].DeltaR(G_GEN_PromptMuon_4vec[0]);
+      dR22 =  G_Muon_4vec[1].DeltaR(G_GEN_PromptMuon_4vec[1]);
 
-      dR12 =  G_GEN_PromptMuon_4vec[0].DeltaR(G_Muon_4vec[1]);
-      dR21 =  G_GEN_PromptMuon_4vec[1].DeltaR(G_Muon_4vec[0]);
+      dR12 =  G_Muon_4vec[0].DeltaR(G_GEN_PromptMuon_4vec[1]);
+      dR21 =  G_Muon_4vec[1].DeltaR(G_GEN_PromptMuon_4vec[0]);
 
       if (dR11 < 0.1 && dR22 < 0.1 && dR11 < dR12 && dR22 < dR21) isMatched = true;
 
@@ -1928,8 +1928,8 @@ bool muonAnalyzer::MatchGenToReco(int &mu1, int &mu2, TString signal) {
       isMatched = false;
       
       if (G_isMuMu || G_isTauMu) {
-	dR1 =  G_GEN_PromptMuon_4vec[0].DeltaR(G_Muon_4vec[0]);
-	dR2 =  G_GEN_PromptMuon_4vec[0].DeltaR(G_Muon_4vec[1]);
+	dR1 =  G_Muon_4vec[0].DeltaR(G_GEN_PromptMuon_4vec[0]);
+	dR2 =  G_Muon_4vec[1].DeltaR(G_GEN_PromptMuon_4vec[0]);
       }
       
       if ( dR1 < 0.1 && dR1 < dR2 ) { 
