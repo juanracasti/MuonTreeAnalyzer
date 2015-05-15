@@ -82,7 +82,7 @@ void RunPROOF_muonAnalyzer(const char* data) {
    //TString dataPath="/gpfs/csic_projects/cms/arodrig/"; //IFCA   (gridui)
   // 1) Set the base path to files
   // TString dataPath="/gpfs/csic_projects/cms/calderon/TreesCSA14"; //IFCA   (gridui)
-  TString dataPath="/gpfs/csic_projects/cms/jfernan/TreesPHYS14/PU20bx25.old/";
+  TString dataPath="/gpfs/csic_projects/cms/jfernan/TreesPHYS14/PU20bx25/";
   // TString dataPath="/gpfs/csic_projects/tier3data"; //IFCA   (gridui)
    //        TString dataPath="/hadoop";                      //UniOvi (fanaeui)
   //   TString dataPath="/pool/data1/MiniTrees";        //CERN   (cmsovd02)
@@ -166,9 +166,48 @@ void RunPROOF_muonAnalyzer(const char* data) {
 
  }
 
+  else if (Signal=="MC_TTbar_PU20bx25") {
+
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_0.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_1.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_2.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_3.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_4.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_5.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_6.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_7.root");
+   
+    bool isdata = false;
+    int nEventsInTheSample = 2829164; 
+    //int nEventsInTheSample = 956666; 
+    double xSection =  6025.2;
+    int whichRun = 2;
+
+ }
+
+
   else if (Signal=="DY_ISO_PU20bx25") {
 
     gPAFOptions->dataFiles.push_back(dataPath + "Tree_ZJets_Madgraph.root");
+   
+    bool isdata = false;
+    int nEventsInTheSample = 2829164; 
+    //int nEventsInTheSample = 956666; 
+    double xSection =  6025.2;
+    int whichRun = 2;
+
+ }
+
+  else if (Signal=="TTbar_ISO_PU20bx25") {
+
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_0.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_1.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_2.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_3.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_4.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_5.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_6.root");
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_TTJets_MadSpin_7.root");
    
     bool isdata = false;
     int nEventsInTheSample = 2829164; 
@@ -187,6 +226,30 @@ void RunPROOF_muonAnalyzer(const char* data) {
     //int nEventsInTheSample = 956666; 
     double xSection =  1;
     int whichRun = 2;
+
+ }
+
+  else if (Signal=="SingleMu_720") {
+
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_SingleMu_mu2012D_720.root");
+   
+    bool isdata = true;
+    int nEventsInTheSample = 301812; 
+    //int nEventsInTheSample = 956666; 
+    double xSection =  1;
+    int whichRun = 1;
+
+ }
+
+  else if (Signal=="SingleMu_740") {
+
+    gPAFOptions->dataFiles.push_back(dataPath + "Tree_SingleMu_mu2012D_740.root");
+   
+    bool isdata = true;
+    int nEventsInTheSample = 299035; 
+    //int nEventsInTheSample = 956666; 
+    double xSection =  1;
+    int whichRun = 1;
 
  }
 

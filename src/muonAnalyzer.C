@@ -28,6 +28,7 @@
 
 muonAnalyzer::muonAnalyzer(TTree* tree):
   PAFAnalysis(tree) {
+  //PAFBaseSelector(tree) {
 }
 
 
@@ -859,6 +860,7 @@ void muonAnalyzer::InsideLoop() {
   G_Muon_TightIDTrkKink.clear();
   G_Muon_HWW_ID.clear();
   G_Muon_HWWIDbutKink.clear();
+  G_Muon_Medium_ID.clear();
 
   G_Muon_fromPVID.clear();
   G_Muon_dzID.clear();
@@ -938,7 +940,7 @@ void muonAnalyzer::InsideLoop() {
 //------------------------------------------------------------------------------
   
   SetGenInfo(Signal);
-  doEffsGEN(Signal);
+  //doEffsGEN(Signal);
   
 
 //------------------------------------------------------------------------------
@@ -950,8 +952,8 @@ void muonAnalyzer::InsideLoop() {
   double Missing_ET_Phi = 0;
     
   NjetsCollection = T_JetAKCHS_Px->size();  
-  Missing_ET = T_METPF_ET; 
-  Missing_ET_Phi = T_METPF_Phi;
+  Missing_ET = T_MET_ET; 
+  Missing_ET_Phi = T_MET_Phi;
    
   GetAllJets(factN);
 
@@ -976,12 +978,17 @@ void muonAnalyzer::InsideLoop() {
     // if ( T_Muon_Pt->at(0) > 20 &&  fabs(T_Muon_Eta->at(0)) < 2.4 && 
     // 	 T_Muon_Pt->at(1) > 10 && fabs(T_Muon_Eta->at(1)) < 2.4 ) { 
 
-    if ( (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau)                                  &&
+    //if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) h_N_PV2->Fill(N_PV, factN);
+    //if (G_isMuMu) h_N_PV3->Fill(N_PV, factN);
+
+    if ( (G_isMuMu) &&// || G_isMuTau || G_isTauMu || G_isTauTau)                                  &&
 	 G_GEN_PromptMuon_4vec[0].Perp() > 10 &&  fabs(G_GEN_PromptMuon_4vec[0].Eta()) < 2.4 &&
+	 !Signal.Contains("ISO")                                                             &&
 	 ( ( !Signal.Contains("Wjets") && G_GEN_PromptMuon_4vec[1].Perp() > 10               &&
 	     fabs(G_GEN_PromptMuon_4vec[1].Eta()) < 2.4 ) || Signal.Contains("Wjets") )      &&
 	 T_Muon_Pt->at(0) > 10                &&  fabs(T_Muon_Eta->at(0)) < 2.4              && 
-	 T_Muon_Pt->at(1) > 10                &&  fabs(T_Muon_Eta->at(1)) < 2.4                 ) {
+	 T_Muon_Pt->at(1) > 10                &&  fabs(T_Muon_Eta->at(1)) < 2.4              &&
+	 G_Muon_GLBorTRKID[0]  &&  G_Muon_GLBorTRKID[1]                              ) {
  
       int ch1 = T_Muon_Charge->at(0);
       int ch2 = T_Muon_Charge->at(1);
@@ -1009,23 +1016,23 @@ void muonAnalyzer::InsideLoop() {
 	  doEffsRECO(Mu1, 0);
 	  doEffsRECO(Mu2, 1);
 
-	  newiVertex = SelectedVertexIndex(Mu1); //--> Select the closest vertex to Mu1
+	  // newiVertex = SelectedVertexIndex(Mu1); //--> Select the closest vertex to Mu1
 	  
-	  if (G_PV_Index >=0 && newiVertex >=0) {
-	    h_N_PV0_PVLep->Fill(newiVertex - G_PV_Index);
-	    dZVertex = T_Vertex_z->at(G_PV_Index) - T_Vertex_z->at(newiVertex);
-	    h_N_dZ_PV0_PVLep->Fill(dZVertex);
-	  }
+	  // if (G_PV_Index >=0 && newiVertex >=0) {
+	  //   h_N_PV0_PVLep->Fill(newiVertex - G_PV_Index);
+	  //   dZVertex = T_Vertex_z->at(G_PV_Index) - T_Vertex_z->at(newiVertex);
+	  //   h_N_dZ_PV0_PVLep->Fill(dZVertex);
+	  // }
 	  
-	  FillRelEff("Dilep", 0, Mu1, factN, newiVertex);
-	  FillRelEff("Dilep", 1, Mu2, factN, newiVertex);
-	  ISORocCurve(0, 1);
+	  //FillRelEff("Dilep", 0, Mu1, factN, newiVertex);
+	  //FillRelEff("Dilep", 1, Mu2, factN, newiVertex);
+	  //ISORocCurve(0, 1);
 	  
-	  Filldz2D(Mu1, Mu2, factN, newiVertex);
+	  //Filldz2D(Mu1, Mu2, factN, newiVertex);
 	  
 	  FillPFIso(Mu1, Mu2, factN, "Dilep");
-	  FillTypeMu(factN, "Dilep");
-	  FillPtEta(Mu1, Mu2, factN, "Dilep");
+	  //FillTypeMu(factN, "Dilep");
+	  //FillPtEta(Mu1, Mu2, factN, "Dilep");
 	  
 	  //-----------------------------------------------------------------------------
 	  // SELECTION:: WW level selection
@@ -1033,12 +1040,12 @@ void muonAnalyzer::InsideLoop() {
 	  
 	  if (passesWWSelection(Mu1, Mu2, 0)) {
 	    
-	    FillRelEff("WWlevel", 0, Mu1, factN, newiVertex);
-	    FillRelEff("WWlevel", 1, Mu2, factN, newiVertex);
+	    //FillRelEff("WWlevel", 0, Mu1, factN, newiVertex);
+	    //FillRelEff("WWlevel", 1, Mu2, factN, newiVertex);
 	    
-	    FillPFIso(Mu1, Mu2, factN, "WWlevel");
-	    FillTypeMu(factN, "WWlevel");
-	    FillPtEta(Mu1, Mu2, factN, "WWlevel");
+	    //FillPFIso(Mu1, Mu2, factN, "WWlevel");
+	    //FillTypeMu(factN, "WWlevel");
+	    //FillPtEta(Mu1, Mu2, factN, "WWlevel");
 	    
 	    }
 	}
@@ -1144,6 +1151,13 @@ void muonAnalyzer::GetAllMuons() {
  
   UInt_t _muonSize = 0;
   _muonSize = T_Muon_Px->size();
+
+  double mll = 0;
+
+  if ( _muonSize > 1 &&  (T_Muon_Charge->at(0) != T_Muon_Charge->at(1)) ) mll = (G_Muon_4vec[0] + G_Muon_4vec[1]).M();
+
+  //double mll = (G_Muon_4vec[0] + G_Muon_4vec[1]).M();
+  //if (mll > 70 && mll < 130)
   
   
   if ( _muonSize > 0 ) {  // asking for at least one muon in the event 
@@ -1157,8 +1171,9 @@ void muonAnalyzer::GetAllMuons() {
       bool isMuonGLBPFID = false;
       bool isMuonGLBorTRK = false;
   
-      bool isMuonTightID = false;
-      bool isMuonHWWID   = false;
+      bool isMuonTightID  = false;
+      bool isMuonHWWID    = false;
+      bool isMuonMediumID = false;
 
       bool isMuonTightIDbutdz = false;
       bool isMuonfromPV       = false;
@@ -1181,12 +1196,14 @@ void muonAnalyzer::GetAllMuons() {
 
       isMuonHWWID   = passHWWMuCuts(i, 0.01, 0.02, 0.1);
 
+      isMuonMediumID = passMediumID(i);
+
       isMuonTightIDbutdz = passHWWMuCuts(i, 0.2, 0.2, 0.5);
 
-      if (T_Muon_fromPV->at(i) > 2)
+      if (T_Muon_fromPV->at(i) >= 2)
 	isMuonfromPV  = true;
 
-      if (G_PV_Index >= 0 && fabs(get_dz(i, G_PV_Index)) < 0.1)
+      if (G_PV_Index >= 0 && fabs(T_Muon_BestTrack_dz->at(i)) < 0.1)
 	isMuondzHWW  = true;
 
       if ((G_Muon_4vec[i].Perp() < 20   && T_Muon_IPwrtAveBSInTrack->at(i) < 0.01) ||
@@ -1197,7 +1214,7 @@ void muonAnalyzer::GetAllMuons() {
 	isMuonTrkKink1 = true;
 
       if ( ( T_Muon_IsGlobalMuon->at(i) == true ) ||
-	   ( T_Muon_IsAllTrackerMuons->at(i) && T_Muon_IsTrackerMuonArbitrated->at(i) ) )
+	   ( T_Muon_IsTrackerMuon->at(i) && T_Muon_IsTrackerMuonArbitrated->at(i) ) )
 	isMuonGLBorTRK = true;
    
 
@@ -1233,6 +1250,9 @@ void muonAnalyzer::GetAllMuons() {
 
       // passing the HWW13 muon ID 
       G_Muon_HWW_ID.push_back(isMuonHWWID * isMuonTrkKink1);
+
+      // passing the Medium muon ID
+      G_Muon_Medium_ID.push_back(isMuonMediumID);
 
       // passing the Tight muon ID but dz
       G_Muon_TightIDbutdz.push_back(isMuonTightIDbutdz);
@@ -1271,51 +1291,144 @@ void muonAnalyzer::GetAllMuons() {
       G_Muon_TightISOPFWeightsR04.push_back(isMuonTightID * isISOPFWeightsR04);
 
 
-      double pt  = T_Muon_Pt->at(i); 
-      double eta = T_Muon_Eta->at(i);
-      double npv = T_Vertex_z->size();
+      // double pt  = T_Muon_Pt->at(i); 
+      // double eta = T_Muon_Eta->at(i);
+      // double npv = T_Vertex_z->size();
 
 
-      if (isMuonTightID) {
+      // if (isMuonTightID && G_Muon_4vec[i].Perp() >= 20) {
 
-	h_Dilep_Eff_pt_TightID[0]->Fill(pt);
-	h_Dilep_Eff_eta_TightID[0]->Fill(eta);
-	h_Dilep_Eff_npv_TightID[0]->Fill(npv);
+      // 	h_Dilep_Eff_pt_TightID[0]->Fill(pt);
+      // 	h_Dilep_Eff_eta_TightID[0]->Fill(eta);
+      // 	h_Dilep_Eff_npv_TightID[0]->Fill(npv);
 
-	if (isISOR04) {
-	  h_Dilep_Eff_pt_TightISOR04[0]->Fill(pt);
-	  h_Dilep_Eff_eta_TightISOR04[0]->Fill(eta);
-	  h_Dilep_Eff_npv_TightISOR04[0]->Fill(npv);
-	}
+      // 	h_Dilep_AllMu_PFRelIso_PFWeightsR04[0]->Fill(getPFRelIso(i, "PFWeightsR04"));
+      // 	h_Dilep_AllMu_PFRelIso_PFWeightsR04[1]->Fill(T_Muon_neutralIsoPFweightR04->at(i)/pt);
+
+      // 	if (isMuonfromPV) {
+      // 	  h_Dilep_Eff_pt_fromPVID[0]->Fill(pt);
+      // 	}
+
+      // 	if (isISOR03) {
+      // 	  h_Dilep_Eff_pt_TightISOR03[0]->Fill(pt);
+      // 	  h_Dilep_Eff_eta_TightISOR03[0]->Fill(eta);
+      // 	  h_Dilep_Eff_npv_TightISOR03[0]->Fill(npv);
+      // 	}
 	
-	if (isISOdBetaR04) {
-	  h_Dilep_Eff_pt_TightISOdBetaR04[0]->Fill(pt);
-	  h_Dilep_Eff_eta_TightISOdBetaR04[0]->Fill(eta);
-	  h_Dilep_Eff_npv_TightISOdBetaR04[0]->Fill(npv);
-	}
+      // 	if (isISOdBetaR03) {
+      // 	  h_Dilep_Eff_pt_TightISOdBetaR03[0]->Fill(pt);
+      // 	  h_Dilep_Eff_eta_TightISOdBetaR03[0]->Fill(eta);
+      // 	  h_Dilep_Eff_npv_TightISOdBetaR03[0]->Fill(npv);
+      // 	}
 	
-	if (isISOPFWeightsR04) {
-	  h_Dilep_Eff_pt_TightISOPFWeightsR04[0]->Fill(pt);
-	  h_Dilep_Eff_eta_TightISOPFWeightsR04[0]->Fill(eta);
-	  h_Dilep_Eff_npv_TightISOPFWeightsR04[0]->Fill(npv);
-	}	
+      // 	if (isISOPFWeightsR03) {
+      // 	  h_Dilep_Eff_pt_TightISOPFWeightsR03[0]->Fill(pt);
+      // 	  h_Dilep_Eff_eta_TightISOPFWeightsR03[0]->Fill(eta);
+      // 	  h_Dilep_Eff_npv_TightISOPFWeightsR03[0]->Fill(npv);
+      // 	}
+
+      // 	if (isISOR04) {
+      // 	  h_Dilep_Eff_pt_TightISOR04[0]->Fill(pt);
+      // 	  h_Dilep_Eff_eta_TightISOR04[0]->Fill(eta);
+      // 	  h_Dilep_Eff_npv_TightISOR04[0]->Fill(npv);
+      // 	}
+	
+      // 	if (isISOdBetaR04) {
+      // 	  h_Dilep_Eff_pt_TightISOdBetaR04[0]->Fill(pt);
+      // 	  h_Dilep_Eff_eta_TightISOdBetaR04[0]->Fill(eta);
+      // 	  h_Dilep_Eff_npv_TightISOdBetaR04[0]->Fill(npv);
+      // 	}
+	
+      // 	if (isISOPFWeightsR04) {
+      // 	  h_Dilep_Eff_pt_TightISOPFWeightsR04[0]->Fill(pt);
+      // 	  h_Dilep_Eff_eta_TightISOPFWeightsR04[0]->Fill(eta);
+      // 	  h_Dilep_Eff_npv_TightISOPFWeightsR04[0]->Fill(npv);
+      // 	}	
 
 	
-	h_Dilep_ISORocCurve_SB_R04->Fill(-1);
-	h_Dilep_ISORocCurve_SB_dBetaR04->Fill(-1);
-	h_Dilep_ISORocCurve_SB_PFWeightsR04->Fill(-1);
+      // 	h_Dilep_ISORocCurve_SB_R04->Fill(-1);
+      // 	h_Dilep_ISORocCurve_SB_dBetaR04->Fill(-1);
+      // 	h_Dilep_ISORocCurve_SB_PFWeightsR04->Fill(-1);
 	
-	for (int j = 0; j < 50; j++) {
+      // 	for (int j = 0; j < 50; j++) {
 	  
-	  if ( passPFIso(i, "R04",          j*1.0/100.0) )
-	    h_Dilep_ISORocCurve_SB_R04->Fill(j);
-	  if ( passPFIso(i, "dBetaR04",     j*1.0/100.0) )
-	    h_Dilep_ISORocCurve_SB_dBetaR04->Fill(j);
-	  if ( passPFIso(i, "PFWeightsR04", j*1.0/100.0) )
-	    h_Dilep_ISORocCurve_SB_PFWeightsR04->Fill(j);
-	}
+      // 	  if ( passPFIso(i, "R04",          j*1.0/100.0) )
+      // 	    h_Dilep_ISORocCurve_SB_R04->Fill(j);
+      // 	  if ( passPFIso(i, "dBetaR04",     j*1.0/100.0) )
+      // 	    h_Dilep_ISORocCurve_SB_dBetaR04->Fill(j);
+      // 	  if ( passPFIso(i, "PFWeightsR04", j*1.0/100.0) )
+      // 	    h_Dilep_ISORocCurve_SB_PFWeightsR04->Fill(j);
+      // 	}
 	
-      }
+      // }
+
+
+      // double pt  = G_Muon_4vec[i].Perp(); 
+      // double eta = G_Muon_4vec[i].Eta();
+      // double npv = T_Vertex_z->size();
+
+      // //double mll = (G_Muon_4vec[0] + G_Muon_4vec[1]).M();
+      // //if (mll > 70 && mll < 130)
+
+      // if ((pt >= 20)) {// && (eta<=2.4) && isMuonGLBorTRK && ((mll>=70) && (mll<120)) ) {
+      // 	h_Dilep_Eff_pt_AllMatched[0]->Fill(pt);
+      // 	h_Dilep_Eff_eta_AllMatched[0]->Fill(eta);
+      // 	h_Dilep_Eff_npv_AllMatched[0]->Fill(npv);
+
+      // 	if (isMuonHWWID) {
+      // 	  h_Dilep_Eff_pt_HWWID[0]->Fill(pt);
+      // 	  h_Dilep_Eff_eta_HWWID[0]->Fill(eta);
+      // 	  h_Dilep_Eff_npv_HWWID[0]->Fill(npv);
+      // 	}
+	
+      // 	if (isMuonMediumID) {
+      // 	  h_Dilep_Eff_pt_fromPVID[0]->Fill(pt);
+      // 	  h_Dilep_Eff_eta_fromPVID[0]->Fill(eta);
+      // 	  h_Dilep_Eff_npv_fromPVID[0]->Fill(npv);
+      // 	}
+	
+      // 	if (isMuonTightID) {
+
+      // 	  h_Dilep_Eff_pt_TightID[0]->Fill(pt);
+      // 	  h_Dilep_Eff_eta_TightID[0]->Fill(eta);
+      // 	  h_Dilep_Eff_npv_TightID[0]->Fill(npv);
+	  
+      // 	  if (isISOR04) {
+      // 	    h_Dilep_Eff_pt_TightISOR04[0]->Fill(pt);
+      // 	    h_Dilep_Eff_eta_TightISOR04[0]->Fill(eta);
+      // 	    h_Dilep_Eff_npv_TightISOR04[0]->Fill(npv);
+      // 	  }
+	  
+      // 	  if (isISOdBetaR04) {
+      // 	    h_Dilep_Eff_pt_TightISOdBetaR04[0]->Fill(pt);
+      // 	    h_Dilep_Eff_eta_TightISOdBetaR04[0]->Fill(eta);
+      // 	    h_Dilep_Eff_npv_TightISOdBetaR04[0]->Fill(npv);
+      // 	  }
+	  
+      // 	  if (isISOPFWeightsR04) {
+      // 	    h_Dilep_Eff_pt_TightISOPFWeightsR04[0]->Fill(pt);
+      // 	    h_Dilep_Eff_eta_TightISOPFWeightsR04[0]->Fill(eta);
+      // 	    h_Dilep_Eff_npv_TightISOPFWeightsR04[0]->Fill(npv);
+      // 	  }
+	  
+	  
+	  
+      // 	  h_Dilep_ISORocCurve_SB_R04->Fill(-1);
+      // 	  h_Dilep_ISORocCurve_SB_dBetaR04->Fill(-1);
+      // 	  h_Dilep_ISORocCurve_SB_PFWeightsR04->Fill(-1);
+	  
+      // 	  for (int j = 0; j < 50; j++) {
+	    
+      // 	    if ( passPFIso(i, "R04",          j*1.0/100.0) )
+      // 	      h_Dilep_ISORocCurve_SB_R04->Fill(j);
+      // 	    if ( passPFIso(i, "dBetaR04",     j*1.0/100.0) )
+      // 	      h_Dilep_ISORocCurve_SB_dBetaR04->Fill(j);
+      // 	    if ( passPFIso(i, "PFWeightsR04", j*1.0/100.0) )
+      // 	      h_Dilep_ISORocCurve_SB_PFWeightsR04->Fill(j);
+      // 	  }
+	  
+      // 	}
+      // }
  
             
       if (G_Debug_DefineAnalysisVariables) std::cout << "[DefineAnalysisVariables]: after muon part" << std::endl;
@@ -1368,7 +1481,7 @@ bool muonAnalyzer::passTightMuCuts(int iMu,
        ( G_Muon_4vec[iMu].Perp() >= 20  && T_Muon_IPwrtAveBSInTrack->at(iMu)  < cutdxyHP ) ) 
     muon_sel[7] = true;	  	
       
-  if ( G_PV_Index >= 0 && fabs(get_dz(iMu, G_PV_Index)) < cutdz) // && T_Muon_fromPV->at(iMu) > 1) 
+  if ( G_PV_Index >= 0 && fabs(T_Muon_BestTrack_dz->at(iMu)) < cutdz) // && T_Muon_fromPV->at(iMu) > 1) 
     muon_sel[8] = true;
   
   // Define the VBTF muon ID
@@ -1393,7 +1506,7 @@ bool muonAnalyzer::passHWWMuCuts(int iMu, float cutdxyLP, float cutdxyHP, float 
 
   if ( ( T_Muon_IsGlobalMuon->at(iMu) == true && T_Muon_NValidHitsSATrk->at(iMu) > 0 &&
 	 T_Muon_NormChi2GTrk->at(iMu) < 10 && T_Muon_NumOfMatchedStations->at(iMu) > 1 ) ||
-       ( T_Muon_IsAllTrackerMuons->at(iMu) && T_Muon_IsTrackerMuonArbitrated->at(iMu) ) )
+       ( T_Muon_IsTrackerMuon->at(iMu) && T_Muon_IsTrackerMuonArbitrated->at(iMu) ) )
     muon_sel[0] = true;
              
   if (T_Muon_IsPFMuon->at(iMu))
@@ -1412,7 +1525,7 @@ bool muonAnalyzer::passHWWMuCuts(int iMu, float cutdxyLP, float cutdxyHP, float 
        (G_Muon_4vec[iMu].Perp() >= 20  && T_Muon_IPwrtAveBSInTrack->at(iMu) < cutdxyHP) ) 
     muon_sel[5] = true;	     
 
-  if ( G_PV_Index >= 0 && fabs(get_dz(iMu, G_PV_Index)) < cutdz) 
+  if ( G_PV_Index >= 0 && fabs(T_Muon_BestTrack_dz->at(iMu)) < cutdz) 
     muon_sel[6] = true;
 
   if (  G_Muon_4vec[iMu].Perp() > 10 ) 
@@ -1437,6 +1550,23 @@ bool muonAnalyzer::passHWWMuCuts(int iMu, float cutdxyLP, float cutdxyHP, float 
              muon_sel[5] * muon_sel[6] * muon_sel[7] * muon_sel[8];
 	
   return isMuonID;    
+
+}
+
+bool muonAnalyzer::passMediumID(int iMu) {
+
+  bool isMuonID = false;
+  bool goodGLB = false;
+
+  goodGLB = T_Muon_IsGlobalMuon->at(iMu)     && 
+    T_Muon_NormChi2GTrk->at(iMu) < 3         &&
+    T_Muon_StaTrkChi2LocalPos->at(iMu) < 12  &&
+    T_Muon_trkKink->at(iMu) < 20;
+
+  isMuonID = T_Muon_ValidFractionInTrk->at(iMu) >= 0.8 && T_Muon_IsPFMuon->at(iMu) &&
+    T_Muon_SegmentCompatibility->at(iMu) >= (goodGLB ? 0.303 : 0.451);
+
+  return isMuonID;
 
 }
 
@@ -1533,9 +1663,9 @@ void muonAnalyzer::GetAllJets(double weight) {
 }
 
 
-//---------------------------------------------------
+// ---------------------------------------------------
 // Set Generator level info
-//---------------------------------------------------
+// ---------------------------------------------------
 
 void muonAnalyzer::SetGenInfo(TString Signal) {
   
@@ -1595,8 +1725,11 @@ void muonAnalyzer::SetGenInfo(TString Signal) {
   TLorentzVector p1 = TLorentzVector(0,0,0,0);
   TLorentzVector p2 = TLorentzVector(0,0,0,0);
     
-  if (Signal.Contains("GGHWW"))
+  if (Signal.Contains("GGHWW") || Signal.Contains("TTbar"))
     {
+
+      if (T_Gen_W_pt->size() != 2) return;
+      if (!( Signal.Contains("TTbar") && fabs(T_Gen_W_MpdgId->at(0))==6 && fabs(T_Gen_W_MpdgId->at(1))==6 )) return;
       
       if ( genPromptMuSize == 2 && fabs(T_Gen_PromptMuon_MpdgId->at(0)) == 24 && 
 	   fabs(T_Gen_PromptMuon_MpdgId->at(1)) == 24 &&
@@ -1723,7 +1856,8 @@ void muonAnalyzer::SetGenInfo(TString Signal) {
       
     }
 
-  if ((Signal.Contains("DY") || Signal.Contains("GGHWW")) && (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau)) {
+  if ((Signal.Contains("DY") || Signal.Contains("GGHWW") || Signal.Contains("TTbar")) && 
+      (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau)) {
 
     if ( p1.Perp() >= p2.Perp() ) {
 
@@ -1757,7 +1891,7 @@ bool muonAnalyzer::MatchGenToReco(int &mu1, int &mu2, TString signal) {
   
   bool isMatched = false; 
 
-  if (signal.Contains("GGHWW") || signal.Contains("DY")) {
+  if (signal.Contains("GGHWW") || signal.Contains("DY") || signal.Contains("TTbar")) {
 
     mu1 = 0; mu2 = 1;
 
@@ -1846,7 +1980,7 @@ bool muonAnalyzer::MatchGenToReco(int &mu1, int &mu2, TString signal) {
 void muonAnalyzer::doEffsGEN(TString signal) {
 
 
-  if (signal.Contains("DY") || signal.Contains("GGHWW")) {
+  if (signal.Contains("DY") || signal.Contains("GGHWW") || signal.Contains("TTbar")) {
 
     if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
  
@@ -1898,7 +2032,7 @@ void muonAnalyzer::doEffsRECO(int iMu, int indexMuon) {
   double eta = T_Muon_Eta->at(iMu);
   double npv = T_Vertex_z->size();
 
-  if ( pt > 10 ) {
+  if ( pt >= 20 && G_Muon_GLBorTRKID[iMu]) {
 
     h_Dilep_Eff_pt_AllMatched[indexMuon]->Fill(pt);
     h_Dilep_Eff_eta_AllMatched[indexMuon]->Fill(eta);
@@ -1964,7 +2098,7 @@ void muonAnalyzer::doEffsRECO(int iMu, int indexMuon) {
       h_Dilep_Eff_npv_TightIDfromPV[iMu]->Fill(npv);
     }
 
-    if (G_Muon_GLBorTRKID[iMu]) {
+    if (G_Muon_Medium_ID[iMu]) {
       h_Dilep_Eff_pt_TightIDAndfromPV[iMu]->Fill(pt);
       h_Dilep_Eff_eta_TightIDAndfromPV[iMu]->Fill(eta);
       h_Dilep_Eff_npv_TightIDAndfromPV[iMu]->Fill(npv);
@@ -2011,311 +2145,7 @@ void muonAnalyzer::doEffsRECO(int iMu, int indexMuon) {
 
 }
 
-// void muonAnalyzer::doEffsPtRECO(int iMu, float inf, float sup, float weight) {
 
-
-//   float mid = (inf+sup)/2;
-
-//   if ( (T_Muon_Pt->at(iMu) > inf) && (T_Muon_Pt->at(iMu) <= sup)) {
-
-//     h_Dilep_Eff_pt_AllMatched[iMu]->Fill(mid, weight);
-
-//     if (T_Muon_IsGlobalMuon->at(iMu))
-//       h_Dilep_Eff_pt_GLBID[iMu]->Fill(mid, weight);
-
-//     if (T_Muon_IsPFMuon->at(iMu))
-//       h_Dilep_Eff_pt_PFID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_GLBPFID[iMu])
-//       h_Dilep_Eff_pt_GLBPFID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
-//       h_Dilep_Eff_pt_fromPVID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
-//       h_Dilep_Eff_pt_dzID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightIDbutdz[iMu])
-//       h_Dilep_Eff_pt_TightIDbutdz[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightIDfromPV[iMu])
-//       h_Dilep_Eff_pt_TightIDfromPV[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
-//       h_Dilep_Eff_pt_TightIDAndfromPV[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightID[iMu])
-//       h_Dilep_Eff_pt_TightID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_HWW_ID[iMu])
-//       h_Dilep_Eff_pt_HWWID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOR03[iMu])
-//       h_Dilep_Eff_pt_TightISOR03[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOR04[iMu])
-//       h_Dilep_Eff_pt_TightISOR04[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOdBetaR03[iMu])
-//       h_Dilep_Eff_pt_TightISOdBetaR03[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOdBetaR04[iMu])
-//       h_Dilep_Eff_pt_TightISOdBetaR04[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOPFWeightsR03[iMu])
-//       h_Dilep_Eff_pt_TightISOPFWeightsR03[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOPFWeightsR04[iMu])
-//       h_Dilep_Eff_pt_TightISOPFWeightsR04[iMu]->Fill(mid, weight);
-
-//   }
-
-// }
-
-// void muonAnalyzer::doEffsEtaRECO(int iMu, float inf, float sup, float weight) {
-
-
-//   float mid = (inf+sup)/2;
-
-//   if ( (T_Muon_Eta->at(iMu) > inf) && (T_Muon_Eta->at(iMu) <= sup)) {
-
-//     h_Dilep_Eff_eta_AllMatched[iMu]->Fill(mid, weight);
-
-//     if (T_Muon_IsGlobalMuon->at(iMu))
-//       h_Dilep_Eff_eta_GLBID[iMu]->Fill(mid, weight);
-
-//     if (T_Muon_IsPFMuon->at(iMu))
-//       h_Dilep_Eff_eta_PFID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_GLBPFID[iMu])
-//       h_Dilep_Eff_eta_GLBPFID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
-//       h_Dilep_Eff_eta_fromPVID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
-//       h_Dilep_Eff_eta_dzID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightIDbutdz[iMu])
-//       h_Dilep_Eff_eta_TightIDbutdz[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightIDfromPV[iMu])
-//       h_Dilep_Eff_eta_TightIDfromPV[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
-//       h_Dilep_Eff_eta_TightIDAndfromPV[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightID[iMu])
-//       h_Dilep_Eff_eta_TightID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_HWW_ID[iMu])
-//       h_Dilep_Eff_eta_HWWID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOR03[iMu])
-//       h_Dilep_Eff_eta_TightISOR03[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOR04[iMu])
-//       h_Dilep_Eff_eta_TightISOR04[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOdBetaR03[iMu])
-//       h_Dilep_Eff_eta_TightISOdBetaR03[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOdBetaR04[iMu])
-//       h_Dilep_Eff_eta_TightISOdBetaR04[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOPFWeightsR03[iMu])
-//       h_Dilep_Eff_eta_TightISOPFWeightsR03[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOPFWeightsR04[iMu])
-//       h_Dilep_Eff_eta_TightISOPFWeightsR04[iMu]->Fill(mid, weight);
-
-//   }
-
-// }
-
-// void muonAnalyzer::doEffsNpvRECO(int iMu, float inf, float sup, float weight) {
-
-
-//   float mid = (inf+sup)/2;
-//   int npv = 0;
-//   npv = T_Vertex_z->size();
-
-//   if ( (npv > inf) && (npv <= sup)) {
-
-//     h_Dilep_Eff_npv_AllMatched[iMu]->Fill(mid, weight);
-
-//     if (T_Muon_IsGlobalMuon->at(iMu))
-//       h_Dilep_Eff_npv_GLBID[iMu]->Fill(mid, weight);
-
-//     if (T_Muon_IsPFMuon->at(iMu))
-//       h_Dilep_Eff_npv_PFID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_GLBPFID[iMu])
-//       h_Dilep_Eff_npv_GLBPFID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_GLBPFID[iMu] && G_Muon_fromPVID[iMu])
-//       h_Dilep_Eff_npv_fromPVID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_GLBPFID[iMu] && G_Muon_dzID[iMu])
-//       h_Dilep_Eff_npv_dzID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightIDbutdz[iMu])
-//       h_Dilep_Eff_npv_TightIDbutdz[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightIDfromPV[iMu])
-//       h_Dilep_Eff_npv_TightIDfromPV[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightID[iMu] && G_Muon_fromPVID[iMu])
-//       h_Dilep_Eff_npv_TightIDAndfromPV[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightID[iMu])
-//       h_Dilep_Eff_npv_TightID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_HWW_ID[iMu])
-//       h_Dilep_Eff_npv_HWWID[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOR03[iMu])
-//       h_Dilep_Eff_npv_TightISOR03[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOR04[iMu])
-//       h_Dilep_Eff_npv_TightISOR04[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOdBetaR03[iMu])
-//       h_Dilep_Eff_npv_TightISOdBetaR03[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOdBetaR04[iMu])
-//       h_Dilep_Eff_npv_TightISOdBetaR04[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOPFWeightsR03[iMu])
-//       h_Dilep_Eff_npv_TightISOPFWeightsR03[iMu]->Fill(mid, weight);
-
-//     if (G_Muon_TightISOPFWeightsR04[iMu])
-//       h_Dilep_Eff_npv_TightISOPFWeightsR04[iMu]->Fill(mid, weight);
-
-//   }
-
-// }
-
-// void muonAnalyzer::doEffsPtGEN(float inf, float sup, float weight, TString signal) {
-
-//   float mid = (inf+sup)/2;
-
-//   float pt1 = -999.0;
-//   float pt2 = -999.0;
-
-//   if (signal.Contains("DY") || signal.Contains("GGHWW")) {
-
-//     if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
-
-//       pt1 = G_GEN_PromptMuon_4vec[0].Perp();
-//       pt2 = G_GEN_PromptMuon_4vec[1].Perp();
-
-//       if ( pt1 > inf && pt1 < sup )
-// 	h_Dilep_Eff_pt_GEN[0]->Fill(mid, weight);
-      
-//       if ( pt2 > inf && pt2 < sup )
-// 	h_Dilep_Eff_pt_GEN[1]->Fill(mid, weight);
-
-//     }
-
-//   }
-
-//   else if (signal.Contains("Wjets")) {
-
-//     if (G_isMuMu || G_isTauMu)
-//       pt1 = G_GEN_PromptMuon_4vec[0].Perp();
-
-//     if ( pt1 > inf && pt1 < sup )
-//       h_Dilep_Eff_pt_GEN[0]->Fill(mid, weight);
-
-//   }
-    
-
-//   if ( (T_Muon_Px->size() > 0) && (T_Muon_Pt->at(0) > inf) && (T_Muon_Pt->at(0) <= sup) ) 
-//     h_Dilep_Eff_pt_AllRECO[0]->Fill(mid, weight);
-
-//   if ( (T_Muon_Px->size() > 1) && (T_Muon_Pt->at(1) > inf) && (T_Muon_Pt->at(1) <= sup) ) 
-//     h_Dilep_Eff_pt_AllRECO[1]->Fill(mid, weight);
-
-
-// }
-
-// void muonAnalyzer::doEffsEtaGEN(float inf, float sup, float weight, TString signal) {
-
-//   float mid = (inf+sup)/2;
-
-//   float eta1 = -999.0;
-//   float eta2 = -999.0;
-
-//   if (signal.Contains("DY") || signal.Contains("GGHWW")) {
-
-//     if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
-
-//       eta1 = G_GEN_PromptMuon_4vec[0].Eta();
-//       eta2 = G_GEN_PromptMuon_4vec[1].Eta();
-
-//       if ( eta1 > inf && eta1 < sup )
-// 	h_Dilep_Eff_eta_GEN[0]->Fill(mid, weight);
-      
-//       if ( eta2 > inf && eta2 < sup )
-// 	h_Dilep_Eff_eta_GEN[1]->Fill(mid, weight);
-
-//     }
-
-//   }
-
-//   else if (signal.Contains("Wjets")) {
-
-//     if (G_isMuMu || G_isTauMu)
-//       eta1 = G_GEN_PromptMuon_4vec[0].Eta();
-
-//     if ( eta1 > inf && eta1 < sup )
-//       h_Dilep_Eff_eta_GEN[0]->Fill(mid, weight);
-
-//   }
-    
-
-//   if ( (T_Muon_Px->size() > 0) && (T_Muon_Eta->at(0) > inf) && (T_Muon_Eta->at(0) <= sup)) 
-//     h_Dilep_Eff_eta_AllRECO[0]->Fill(mid, weight);
-
-//   if ( (T_Muon_Px->size() > 1) && (T_Muon_Eta->at(1) > inf) && (T_Muon_Eta->at(1) <= sup)) 
-//     h_Dilep_Eff_eta_AllRECO[1]->Fill(mid, weight);
-
-// }
-
-// void muonAnalyzer::doEffsNpvGEN(float inf, float sup, float weight, TString signal) {
-
-//   float mid = (inf+sup)/2;
-
-//   int npv = 0;
-//   npv = T_Vertex_z->size();
-
-//   if ( (npv > inf) && (npv <= sup)) {
-
-//     if (signal.Contains("DY") || signal.Contains("GGHWW")) {
-
-//       if (G_isMuMu || G_isMuTau || G_isTauMu || G_isTauTau) {
-
-// 	h_Dilep_Eff_npv_GEN[0]->Fill(mid, weight);
-// 	h_Dilep_Eff_npv_GEN[1]->Fill(mid, weight);
-
-//       }
-
-//     }
-
-//     else if (signal.Contains("Wjets")) {
-
-//       if (G_isMuMu || G_isTauMu) 
-// 	h_Dilep_Eff_npv_GEN[0]->Fill(mid, weight);
-
-//     }
-    
-//     if (T_Muon_Px->size() > 0) h_Dilep_Eff_npv_AllRECO[0]->Fill(mid, weight);
-//     if (T_Muon_Px->size() > 1) h_Dilep_Eff_npv_AllRECO[1]->Fill(mid, weight);
-  
-//   }
-
-// }
 
 //------------------------------------------------------------------------------
 // ISO Roc Curve
@@ -2691,25 +2521,31 @@ void muonAnalyzer::FillPFIso(int iMu1, int iMu2, double weight, string levelCut)
 
     }
 
-    if (G_Muon_TightID[0] && G_Muon_TightID[1] )    {
+    if (G_Muon_TightID[0] && T_Muon_Pt->at(iMu1)>=20)    { // && G_Muon_TightID[1] 
 
       h_Dilep_TightMu_PFRelIso_R03[0]->Fill(getPFRelIso(iMu1, "R03"), weight);
-      h_Dilep_TightMu_PFRelIso_R03[1]->Fill(getPFRelIso(iMu2, "R03"), weight);
+      h_Dilep_TightMu_PFRelIso_R03[1]->Fill(T_Muon_chargedHadronIsoR03->at(iMu1)/T_Muon_Pt->at(iMu1), weight);
+      //h_Dilep_TightMu_PFRelIso_R03[1]->Fill(getPFRelIso(iMu2, "R03"), weight); T_Muon_chargedHadronIsoR04->at(iMu)
 
-      h_Dilep_TightMu_PFRelIso_R04[0]->Fill(getPFRelIso(iMu1, "R04"), weight);
-      h_Dilep_TightMu_PFRelIso_R04[1]->Fill(getPFRelIso(iMu2, "R04"), weight);
+      //h_Dilep_TightMu_PFRelIso_R04[0]->Fill(getPFRelIso(iMu1, "R04"), weight);
+      h_Dilep_TightMu_PFRelIso_R04[0]->Fill(T_Muon_chargedHadronIsoR04->at(iMu1)/T_Muon_Pt->at(iMu1), weight);
+      //h_Dilep_TightMu_PFRelIso_R04[1]->Fill(getPFRelIso(iMu2, "R04"), weight);
 
       h_Dilep_TightMu_PFRelIso_dBetaR03[0]->Fill(getPFRelIso(iMu1, "dBetaR03"), weight);
-      h_Dilep_TightMu_PFRelIso_dBetaR03[1]->Fill(getPFRelIso(iMu2, "dBetaR03"), weight);
+      h_Dilep_TightMu_PFRelIso_dBetaR03[1]->Fill(T_Muon_neutralHadronIsoR03->at(iMu1)/T_Muon_Pt->at(iMu1), weight);
+      //h_Dilep_TightMu_PFRelIso_dBetaR03[1]->Fill(getPFRelIso(iMu2, "dBetaR03"), weight);
 
-      h_Dilep_TightMu_PFRelIso_dBetaR04[0]->Fill(getPFRelIso(iMu1, "dBetaR04"), weight);
-      h_Dilep_TightMu_PFRelIso_dBetaR04[1]->Fill(getPFRelIso(iMu2, "dBetaR04"), weight);
+      //h_Dilep_TightMu_PFRelIso_dBetaR04[0]->Fill(getPFRelIso(iMu1, "dBetaR04"), weight);
+      h_Dilep_TightMu_PFRelIso_dBetaR04[0]->Fill(T_Muon_neutralHadronIsoR04->at(iMu1)/T_Muon_Pt->at(iMu1), weight);
+      //h_Dilep_TightMu_PFRelIso_dBetaR04[1]->Fill(getPFRelIso(iMu2, "dBetaR04"), weight);
 
       h_Dilep_TightMu_PFRelIso_PFWeightsR03[0]->Fill(getPFRelIso(iMu1, "PFWeightsR03"), weight);
-      h_Dilep_TightMu_PFRelIso_PFWeightsR03[1]->Fill(getPFRelIso(iMu2, "PFWeightsR03"), weight);
+      h_Dilep_TightMu_PFRelIso_PFWeightsR03[1]->Fill(T_Muon_photonIsoR03->at(iMu1)/T_Muon_Pt->at(iMu1), weight);
+      //h_Dilep_TightMu_PFRelIso_PFWeightsR03[1]->Fill(getPFRelIso(iMu2, "PFWeightsR03"), weight);
 
-      h_Dilep_TightMu_PFRelIso_PFWeightsR04[0]->Fill(getPFRelIso(iMu1, "PFWeightsR04"), weight);
-      h_Dilep_TightMu_PFRelIso_PFWeightsR04[1]->Fill(getPFRelIso(iMu2, "PFWeightsR04"), weight);
+      //h_Dilep_TightMu_PFRelIso_PFWeightsR04[0]->Fill(getPFRelIso(iMu1, "PFWeightsR04"), weight);
+      h_Dilep_TightMu_PFRelIso_PFWeightsR04[0]->Fill(T_Muon_photonIsoR04->at(iMu1)/T_Muon_Pt->at(iMu1), weight);
+      //h_Dilep_TightMu_PFRelIso_PFWeightsR04[1]->Fill(getPFRelIso(iMu2, "PFWeightsR04"), weight);
 
     }
 
@@ -3372,8 +3208,8 @@ float muonAnalyzer::DeltaPhi(float phi1, float phi2) {
  float muonAnalyzer::projectedMET(int lep1, int lep2){
   
   
-  float MET    = T_METPF_ET;
-  float METPhi = T_METPF_Phi;
+  float MET    = T_MET_ET;
+  float METPhi = T_MET_Phi;
 
   float deltaPhiLep0MET = fabs(DeltaPhi(G_Muon_4vec[lep1].Phi(), METPhi));
   float deltaPhiLep1MET = fabs(DeltaPhi(G_Muon_4vec[lep2].Phi(), METPhi));
@@ -3462,7 +3298,7 @@ float muonAnalyzer::DeltaPhi(float phi1, float phi2) {
     bool thereIsSoftMuon = false;
     if (Mu.Pt() > 3                                             &&
 	((Mu.Pt() <= 20.) || (Mu.Pt() > 20 && isolation > 0.1)) &&
-	T_Muon_IsAllTrackerMuons->at(k)                         &&
+	T_Muon_IsTrackerMuon->at(k)                             &&
 	T_Muon_IsTMLastStationAngTight->at(k)                   &&
 	T_Muon_InnerTrackFound->at(k) > 10                      &&
 	fabs(T_Muon_IP2DBiasedPV->at(k)) < 0.2                  &&
@@ -3526,7 +3362,7 @@ double mass = (G_Muon_4vec[lep1] + G_Muon_4vec[lep2]).M();
 
  if ( T_Muon_Px->size() < 3 )  {  	       // No extra leptons above 10 GEV 
    
-   if ( T_METPF_ET > 20 ) { 
+   if ( T_MET_ET > 20 ) { 
 
      if ( mass > 12 ) {
 

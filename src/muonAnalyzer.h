@@ -16,6 +16,7 @@
 #define MUONFR_NEWJETETDEF_H 1
 
 #include "PAFAnalysis.h"
+//#include "PAFBaseSelector.h"
 
 #include <TH1F.h>
 #include <TMatrix.h>
@@ -27,6 +28,7 @@
 
 
 class muonAnalyzer: public PAFAnalysis{
+  //class muonAnalyzer: public PAFBaseSelector{
 
  public:
    muonAnalyzer(TTree *tree=0);
@@ -40,6 +42,7 @@ class muonAnalyzer: public PAFAnalysis{
    void                      GetAllMuons();
    bool                      passTightMuCuts(int, float, float, float, int, int);
    bool                      passHWWMuCuts(int, float, float, float);
+   bool                      passMediumID(int);
    void                      SetGenInfo(TString);
    bool                      MatchGenToReco(int&, int&, TString);
    void                      doEffsGEN(TString);
@@ -98,6 +101,7 @@ class muonAnalyzer: public PAFAnalysis{
    std::vector<bool>           G_Muon_TightIDdxyHWW;
    std::vector<bool>           G_Muon_TightIDdzHWW;
    std::vector<bool>           G_Muon_TightIDTrkKink;
+   std::vector<bool>           G_Muon_Medium_ID;
 
    std::vector<bool>           G_Muon_ISOR03;
    std::vector<bool>           G_Muon_ISOR04;
