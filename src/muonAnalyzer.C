@@ -1637,22 +1637,33 @@ void muonAnalyzer::GetAllJets(double weight) {
   int sizeJet = 0; 
   sizeJet =  T_JetAKCHS_Px->size(); 
  
-  Int_t jetPt = 30;
-  Int_t jetEta = 5;
+  double jetPt = 30;
+  double jetEta = 2.4;
 
   Int_t Njets = 0;
   
   for (int j = 0; j < sizeJet; j++) {
+    
+    TLorentzVector jet(T_JetAKCHS_Px->at(j),
+		       T_JetAKCHS_Py->at(j),
+		       T_JetAKCHS_Pz->at(j),
+		       T_JetAKCHS_Energy->at(j)));
 
-      G_Jet_4vec.push_back(TLorentzVector(T_JetAKCHS_Px->at(j),
-					  T_JetAKCHS_Py->at(j),
-					  T_JetAKCHS_Pz->at(j),
-					  T_JetAKCHS_Energy->at(j)));
-   
-      if ( G_Jet_4vec[j].Perp() < jetPt) continue;
-      if ( G_Jet_4vec[j].Eta() > jetEta) continue;
-      
-      Njets++;
+    G_Jet_4vec.push_back(jet);
+    
+    if ( jet.Pt()  < jetPt)  continue;
+    if ( jet.Eta() > jetEta) continue;
+    if (!passJetID(i))       continue;
+    
+    // Check if jets are cleaned of selected leptons
+    bool isClean = true;
+    for (UInt_t k=0; k<2; k++) {
+      if ( jet.DeltaR(G_Muon_4vec[k]) < 0.4) isClean = false;
+    }
+    
+    if (!isClean) continue;
+    
+    Njets++;
 
       //h_Dilep_Jet_Energy->Fill(T_JetAKCHS_Energy->at(j), weight);
   }
@@ -3106,6 +3117,26 @@ Int_t  muonAnalyzer::SelectedVertexIndex(TString signal, int iMu) //--> Currentl
       
     } 
   
+}
+
+//-----------------------------------------------------------------------------
+// Jet ID
+//-----------------------------------------------------------------------------
+
+bool muonAnalyzer::passJetID(unsigned iJet)
+{
+  if (!(T_JetAKCHS_nDaughters->at(iJet)        > 1   )) return false;
+  if (!(T_JetAKCHS_NeutHadEnergyFrac->at(iJet) < 0.99)) return false;
+  if (!(T_JetAKCHS_NeutEmEnergyFrac ->at(iJet) < 0.99)) return false;
+
+  if (TMath::Abs(T_JetAKCHS_Eta->at(iJet)) < 2.5) {
+    if (!(T_JetAKCHS_CharEmEnergyFrac->at(iJet)  < 0.99)) return false;
+    if (!(T_JetAKCHS_CharHadEnergyFrac->at(iJet) > 0.00)) return false;
+    if (!(T_JetAKCHS_ChargedMultiplicity->at(iJet) > 0 )) return false;
+    return true;
+  }
+
+  return true;
 }
 
 //------------------------------------------------------------------------------

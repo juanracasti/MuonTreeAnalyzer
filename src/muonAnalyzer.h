@@ -62,6 +62,7 @@ class muonAnalyzer: public PAFAnalysis{
    double                    getPFRelIso (int, string);
    void                      ISORocCurve(int, int);
    void                      GetAllJets(double);
+   bool                      passJetID(unsigned);
    Int_t                     SelectedVertexIndex();
    Int_t                     SelectedVertexIndex(int);
    Int_t                     SelectedVertexIndex(TString, int);
